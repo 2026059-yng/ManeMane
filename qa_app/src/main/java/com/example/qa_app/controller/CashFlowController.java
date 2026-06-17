@@ -17,7 +17,7 @@ public class CashFlowController {
   }
 
   @GetMapping("/cashflow")
-  public String cashflow(Model model) {
+  public String cashflow(@PathVariable int user_id,Model model) {
     model.addAttribute("cashflow", cashFlowService.calcExpensesThisMonth(user_id));
     model.addAttribute("cashflow", cashFlowService.showAllThisMonth(user_id) );
     model.addAttribute("cashflow", cashFlowService.calcExpensesLastMonth(user_id)); 
