@@ -20,11 +20,11 @@ public class CashFlowController {
   }
 
   @GetMapping("/cashflow")
-  public String cashflow(@PathVariable int user_id, Model model, HttpSession session) {
-    model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(user_id));
-    model.addAttribute("allThisMonth", cashFlowService.showAllThisMonth(user_id) );
-    model.addAttribute("totalExpensesLastMonth", cashFlowService.calcExpensesLastMonth(user_id)); 
-    model.addAttribute("allLastMonth", cashFlowService.showAllLastMonth(user_id));
+  public String cashflow(Model model, HttpSession session) {
+    model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(session.getAttribute(user_id)));
+    model.addAttribute("allThisMonth", cashFlowService.showAllThisMonth(session.getAttribute(user_id)));
+    model.addAttribute("totalExpensesLastMonth", cashFlowService.calcExpensesLastMonth(session.getAttribute(user_id))); 
+    model.addAttribute("allLastMonth", cashFlowService.showAllLastMonth(session.getAttribute(user_id)));
     return "cashflow";
   }
 
