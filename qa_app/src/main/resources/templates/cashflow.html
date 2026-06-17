@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>履歴画面</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <h1>履歴</h1>
+    <div>
+        <button type="button">今月</button>
+        <button type="button">先月</button>
+    </div>
+
+    <div>
+        <h3>今月の使用額（支出のみ）</h3>
+        <p><span>￥15,000JPY</span></p>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>日付</th>
+                <th>カテゴリー</th>
+                <th>金額</th>
+            </tr>
+            <td>6/10</td>
+            <td>趣味・娯楽</td>
+            <td>
+                <span>-￥5,000</span>
+                <form action="" method="post">
+                    <button type="submit">×</button>
+                </form>
+            </td>
+        </table>
+    </div>
+    </main>
+    
+</body>
+
+</html>
