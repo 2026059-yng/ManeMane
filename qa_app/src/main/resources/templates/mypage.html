@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/mypage.css">
+    <title>マイページ</title>
+</head>
+<body>
+    <div>
+        <span class="mypage-monthlyBudget">今月の使用可能金額予算</span><br>
+        <div class="mypage-monthlyBudgetAmount" th:text="${monthlyBudget}">¥ 105,000</div>
+        <!-- CSSで border-bottom: 5px solid lightblue; の形式で書く -->
+        <span class="mypage-monthlyBudget">収入 - 固定費の合計</span>
+    </div>
+
+    <span>・</span><span>手取り収入の変更</span><br>
+    <form action="" metho>
+        <span>¥</span>
+        <input type="text">
+    </form>
+    <button>月給給料の保存</button>
+
+    <span>・</span><span>カテゴリー名の変更</span><br>
+    <span>・</span><form action="">食費</form>
+    <span>・</span><form action="">趣味・娯楽</form>
+    <span>・</span><form action="">その他</form>
+    <button>カテゴリーの保存</button>
+
+    <span>・</span><span>固定費の変更</span><br>
+
+    
+</body>
+</html>
