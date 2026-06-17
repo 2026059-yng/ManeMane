@@ -1,23 +1,14 @@
-package com.example.qa_app.model.DTO;
+package com.example.qa_app.model.Entity;
 
-//DTO
-public class User {
-    private int id;
+//Entity
+public class LoginForm {
     private String email;
     private String password;
 
-    public User(int id, String email, String password) {
-        this.id = id;
+
+    public LoginForm(String email, String password) {
         this.email = email;
         this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getEmail() {
