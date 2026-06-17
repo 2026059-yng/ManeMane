@@ -38,7 +38,7 @@ public class CashFlowService {
     }
 
     // 先月の支出の合計金額を計算
-    public int calcExpensesThisMonth(int user_id) {
+    public int calcExpensesLastMonth(int user_id) {
         List<Daily> expenses = cashFlowRepository.findExpensesLastMonth(user_id);
         int sum = 0;
         for (int i = 0; i < expenses.size(); i++) {
