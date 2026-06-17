@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head >
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/qa_app/src/main/resources/static/css/home.css">
@@ -9,37 +9,39 @@
 </head>
 
 <body>
-    <header th:replace="~{fragment :: header(履歴画面)}"></header>
+    <header th:replace="~{fragment :: header}"></header>
     <main>
         <h1>履歴</h1>
-    <div>
-        <button type="button">今月</button>
-        <button type="button">先月</button>
-    </div>
+        <div>
+            <button type="button">今月</button>
+            <button type="button">先月</button>
+        </div>
 
-    <div>
-        <h3>今月の使用額（支出のみ）</h3>
-        <p><span>￥15,000JPY</span></p>
-    </div>
-    <div>
-        <table>
-            <tr>
-                <th>日付</th>
-                <th>カテゴリー</th>
-                <th>金額</th>
-            </tr>
-            <td>6/10</td>
-            <td>趣味・娯楽</td>
-            <td>
-                <span>-￥5,000</span>
-                <form action="" method="post">
-                    <button type="submit">×</button>
-                </form>
-            </td>
-        </table>
-    </div>
+        <div>
+            <h3>今月の使用額（支出のみ）</h3>
+            <p>￥<span th:text="${totalExpensesThisMonth}">15,000</span>JPY</p>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>日付</th>
+                    <th>カテゴリー</th>
+                    <th>金額</th>
+                </tr>
+                <tr th:each="record : ${allThisMonth}">
+                    <td th:text="${record.date}">6/10</td>
+                    <td th:text="${record.category_name}">趣味・娯楽</td>
+                    <td>
+                        <span th:text="{record.daily_amount}">-￥5,000</span>
+                        <form th:action="@{/cashflow/{id}/delete(id=${daily.id})}" method="post">
+                            <button type="submit">×</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </main>
-    
+
 </body>
 
 </html>
