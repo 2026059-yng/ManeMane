@@ -46,3 +46,25 @@
     color: black;
 }
 
+/* フラグメント　ここまで */
+
+
+/* ホーム画面 ここから */
+.home-container{
+  margin: 10px;
+}
+.home-showamount-container{
+  padding: 15px 25px;
+  border-radius: 20px;
+  background-color: rgb(54, 56, 80);
+}
+#home-show-title{
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(243, 243, 243);
+}
+#home-show-amount{
+  font-size: 26px;
+  font-weight: bold;
+  color: rgb(250, 250, 250);
+}
