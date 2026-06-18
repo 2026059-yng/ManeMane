@@ -12,35 +12,39 @@
     <header th:replace="~{fragment :: header}"></header>
     <main>
         <h1>履歴</h1>
-        <div>
-            <button type="button">今月</button>
-            <button type="button">先月</button>
+        <div class="cashflow-buttons">
+            <button class="cashflow-button" id="thisMonth">今月</button>
+            <button class="cashflow-button" id="lastMonth">先月</button>
         </div>
 
-        <div>
+
+        <div class="cashflow-allExpenses">
             <h3>今月の使用額（支出のみ）</h3>
-            <p>￥<span th:text="${totalExpensesThisMonth}">15,000</span>JPY</p>
+            <p class="cashflow-amount">￥<span th:text="${totalExpensesThisMonth}">15,000</span>JPY</p>
         </div>
         <div>
             <table>
-                <tr>
+                <tr class="cashflow-colNames">
                     <th>日付</th>
                     <th>カテゴリー</th>
                     <th>金額</th>
                 </tr>
-                <tr th:each="record : ${allThisMonth}">
-                    <td th:text="${record.date}">6/10</td>
-                    <td th:text="${record.category_name}">趣味・娯楽</td>
+                <tr th:each="thisMonth : ${allThisMonth}">
+                    <td th:text="${thisMonth.date}">6/10</td>
+                    <td th:text="${thisMonth.category_name}">趣味・娯楽</td>
+                    <td th:text="${thisMonth.daily_amount}"><span
+                            th:class="${thisMonth.in_out} == TRUE ? 'cashflow-out' : 'cashflow-in'">-￥5,000</span></td>
                     <td>
-                        <span th:text="{record.daily_amount}">-￥5,000</span>
                         <form th:action="@{/cashflow/{id}/delete(id=${daily.id})}" method="post">
-                            <button type="submit">×</button>
+                            <button type="submit" class="cashflow-delete"
+                                onclick="return confirm('本当に削除しますか？');">×</button>
                         </form>
                     </td>
                 </tr>
             </table>
         </div>
     </main>
+
 
 </body>
 

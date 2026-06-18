@@ -11,47 +11,50 @@ import com.example.qa_app.model.DTO.Daily;
 public class CashFlowRepository {
     private final JdbcClient jdbcClient;
 
-    public CashFlowRepository(JdbcClient jdbcClient){
+    public CashFlowRepository(JdbcClient jdbcClient) {
         this.jdbcClient = jdbcClient;
     }
 
-
     // 今月分の支出のみのデータを取得
-    public List<Daily> findExpensesThisMonth(int user_id){
-        return jdbcClient.sql("SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND in_out = TRUE AND date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND CURRENT_DATE ORDER BY date DESC, daily_amount DESC;")
+    public List<Daily> findExpensesThisMonth(int user_id) {
+        return jdbcClient.sql(
+                "SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND in_out = TRUE AND date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND CURRENT_DATE ORDER BY date DESC, daily_amount DESC")
+                .param("user_id", user_id)
                 .query(Daily.class)
                 .list();
     }
 
-
     // 今月分の収支データを取得
-    public List<Daily> findAllThisMonth(int user_id){
-        return jdbcClient.sql("SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND CURRENT_DATE ORDER BY date DESC, daily_amount DESC;")
-        .query(Daily.class)
-        .list();
+    public List<Daily> findAllThisMonth(int user_id) {
+        return jdbcClient.sql(
+                "SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND CURRENT_DATE ORDER BY date DESC, daily_amount DESC")
+                .param("user_id", user_id)
+                .query(Daily.class)
+                .list();
     }
-
 
     // dailyテーブルから特定のレコードを削除
-    public void deleteCashFlowItem(Long id){
+    public void deleteCashFlowItem(Long id) {
         jdbcClient.sql("DELETE FROM daily WHERE id = :id")
-        .param("id", id)
-        .update();
+                .param("id", id)
+                .update();
     }
-
 
     // 先月の支出のみのデータを取得
-    public List<Daily> findExpensesLastMonth(int user_id){
-        return jdbcClient.sql("SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND in_out = TRUE AND date BETWEEN DATE_FORMAT(NOW()-INTERVAL 1 MONTH, '%Y-%m-01') AND LAST_DAY(NOW() - INTERVAL 1 MONTH) ORDER BY date DESC, daily_amount DESC; ")
-        .query(Daily.class)
-        .list();
+    public List<Daily> findExpensesLastMonth(int user_id) {
+        return jdbcClient.sql(
+                "SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND in_out = TRUE AND date BETWEEN DATE_FORMAT(NOW()-INTERVAL 1 MONTH, '%Y-%m-01') AND LAST_DAY(NOW() - INTERVAL 1 MONTH) ORDER BY date DESC, daily_amount DESC")
+                .param("user_id", user_id)
+                .query(Daily.class)
+                .list();
     }
 
-
     // 先月の収支データを取得
-    public List<Daily> findAllLastMonth(int user_id){
-        return jdbcClient.sql("SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND date BETWEEN DATE_FORMAT(NOW()-INTERVAL 1 MONTH, '%Y-%m-01') AND LAST_DAY(NOW() - INTERVAL 1 MONTH) ORDER BY date DESC, daily_amount DESC;")
-        .query(Daily.class)
-        .list();
+    public List<Daily> findAllLastMonth(int user_id) {
+        return jdbcClient.sql(
+                "SELECT date, category_name, in_out, daily_amount FROM daily WHERE user_id = :user_id AND date BETWEEN DATE_FORMAT(NOW()-INTERVAL 1 MONTH, '%Y-%m-01') AND LAST_DAY(NOW() - INTERVAL 1 MONTH) ORDER BY date DESC, daily_amount DESC")
+                .param("user_id", user_id)
+                .query(Daily.class)
+                .list();
     }
 }
