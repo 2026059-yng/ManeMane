@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>マネマネ</title>
-  <link rel="stylesheet" href="/css/home.css">
+  <!-- <link rel="stylesheet" href="/css/home.css"> -->
+  <script src="/js/HomeDate.js"></script>
 </head>
 <body>
   <div th:replace="~{fragment :: header}"></div>
@@ -14,24 +15,24 @@
     <div class="home-showamount-container">
       <div>
         <span id="home-show-title">使用可能金額</span><br>
-        <span id="home-show-amount">￥93,000</span>
-        <!-- <span id="home-show-amount" th:text="${availableBalance}">￥93,000</span> -->
+        <!-- <span id="home-show-amount">￥93,000</span> -->
+        <span id="home-show-amount" th:text="${availableBalance}">￥93,000</span>
       </div>
       <div class="home-bottomAmount-container">
         <div>
           <span id="home-show-subtitle">月間給料(収入)</span><br>
-          <span id="home-show-subamount">￥200,000</span>
-          <!-- <span id="home-show-subamount" th:text="${income}">￥200,000</span> -->
+          <!-- <span id="home-show-subamount">￥200,000</span> -->
+          <span id="home-show-subamount" th:text="${income}">￥200,000</span>
         </div>
           <div>
           <span id="home-show-subtitle">固定費</span><br>
-          <span id="home-show-subamount">￥95,000</span>
-          <!-- <span id="home-show-subamount" th:text="${fixedCosts}">￥95,000</span> -->
+          <!-- <span id="home-show-subamount">￥95,000</span> -->
+          <span id="home-show-subamount" th:text="${fixedCosts}">￥95,000</span>
         </div>
         <div>
           <span id="home-show-subtitle">実支出額(今月)</span><br>
-          <span id="home-show-subamount">￥11,700</span>
-          <!-- <span id="home-show-subamount" th:text="${actualExpenses}">￥11,700</span> -->
+          <!-- <span id="home-show-subamount">￥11,700</span> -->
+          <span id="home-show-subamount" th:text="${actualExpenses}">￥11,700</span>
         </div>
       </div>
     </div>
@@ -58,9 +59,9 @@
         <div class="home-category-container">
           <nav id="home-entry-subtitle">カテゴリー</nav>
           <div class="home-amountButton-container">
-            <button class="home-category-button"><span>●</span>食費</button>
-            <button class="home-category-button"><span>●</span>趣味・娯楽</button>
-            <button class="home-category-button"><span>●</span>その他</button>
+            <button class="home-category-button"><span>●</span><span th:text="category_name1">食費</span></button>
+            <button class="home-category-button"><span>●</span><span th:text="category_name2">趣味・娯楽</span></button>
+            <button class="home-category-button"><span>●</span><span th:text="category_name3">その他</span></button>
           </div>
         </div>
     
