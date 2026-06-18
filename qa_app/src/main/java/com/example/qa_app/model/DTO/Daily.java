@@ -1,17 +1,19 @@
 package com.example.qa_app.model.DTO;
 
+import java.sql.Date;
+
 public class Daily {
-    private  int date;
+    private  Date date;
     private String categoryName;
     private  boolean isInOut;
     private  int dailyAmount;
-    public Daily(int date,String categoryName,boolean isInOut,int dailyAmount){
+    public Daily(Date date,String categoryName,boolean isInOut,int dailyAmount){
         this.date=date;
         this.categoryName=categoryName;
         this.isInOut=isInOut;
         this.dailyAmount=dailyAmount;
     }
-    public int getDate() {
+    public Date getDate() {
         return date;
     }
     public String getCategoryName() {

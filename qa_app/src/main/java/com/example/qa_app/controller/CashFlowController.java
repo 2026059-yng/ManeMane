@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import jakarta.servlet.http.HttpSession;
 
 import com.example.qa_app.service.CashFlowService;
 
-import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class CashFlowController {
@@ -18,13 +19,14 @@ public class CashFlowController {
     public CashFlowController(CashFlowService cashFlowService) {
         this.cashFlowService = cashFlowService;
   }
-
+  int user_id ;
   @GetMapping("/cashflow")
   public String cashflow(@PathVariable int user_id, Model model, HttpSession session) {
-    model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(user_id));
-    model.addAttribute("allThisMonth", cashFlowService.showAllThisMonth(user_id) );
-    model.addAttribute("totalExpensesLastMonth", cashFlowService.calcExpensesLastMonth(user_id)); 
-    model.addAttribute("allLastMonth", cashFlowService.showAllLastMonth(user_id));
+    user_id = (int)session.getAttribute("user_id");
+    model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(session.getAttribute(user_id)));
+    model.addAttribute("allThisMonth", cashFlowService.showAllThisMonth(session.getAttribute("user_id")));
+    model.addAttribute("totalExpensesLastMonth", cashFlowService.calcExpensesLastMonth(session.getAttribute("user_id"))); 
+    model.addAttribute("allLastMonth", cashFlowService.showAllLastMonth(session.getAttribute("user_id")));
     return "cashflow";
   }
 
