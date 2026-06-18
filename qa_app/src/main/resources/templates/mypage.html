@@ -8,27 +8,79 @@
 </head>
 <body>
     <div>
-        <span class="mypage-monthlyBudget">今月の使用可能金額予算</span><br>
-        <div class="mypage-monthlyBudgetAmount" th:text="${monthlyBudget}">¥ 105,000</div>
+        <span class="mypage-monthlyBudget">今月の使用可能金額予算</span>
+        <div>
+            <span class="mypage-monthlyBudgetAmount">¥</span>
+            <span class="mypage-monthlyBudgetAmount" th:text="${monthlyBudget}">105,000</span>
+        </div>
         <!-- CSSで border-bottom: 5px solid lightblue; の形式で書く -->
         <span class="mypage-monthlyBudget">収入 - 固定費の合計</span>
     </div>
 
-    <span>・</span><span>手取り収入の変更</span><br>
-    <form action="" metho>
-        <span>¥</span>
-        <input type="text">
+    <span class="mypage-item-circle">●</span>
+    <span>手取り収入の変更</span><br>
+    <form action="/mypage" method="post">
+        <div class="mypage-income-fakeform">
+            <label for="income">¥</label>
+            <input type="number" id="income" name="income" th:value="${income}" class="mypage-income-form">
+        </div>
+        <button type="submit" class="mypage-saveButton">月給給料の保存</button>
     </form>
-    <button>月給給料の保存</button>
 
-    <span>・</span><span>カテゴリー名の変更</span><br>
-    <span>・</span><form action="">食費</form>
-    <span>・</span><form action="">趣味・娯楽</form>
-    <span>・</span><form action="">その他</form>
-    <button>カテゴリーの保存</button>
+    <span class="mypage-item-circle">●</span>
+    <span>カテゴリー名の変更</span><br>
+    <form action="/mypage" method="post">
+        <div>
+            <label for="category_name1" class="category_name1">●</label>
+            <input type="text" id="category_name1" name="category_name1" th:value="${category_name1}">
+        </div>
+        <div>
+            <label for="category_name2" class="category_name2">●</label>
+            <input type="text" id="category_name2" name="category_name2" th:value="${category_name2}">
+        </div>
+        <div>
+            <label for="category_name3" class="category_name3">●</label>
+            <input type="text" id="category_name3" name="category_name3" th:value="${category_name3}">
+        </div>
+        <button type="submit" class="mypage-saveButton">カテゴリーの保存</button>
+    </form>
 
-    <span>・</span><span>固定費の変更</span><br>
+    <div class="mypage-cost-change">
+        <div>
+            <span class="mypage-item-circle">●</span>
+            <span>固定費の変更</span>
+        </div>
+        <div class="mypage-totalCosts">
+            <span>合計 : ¥</span>
+            <span class="" th:text="fixedCosts">75,000</span>
+        </div>
+    </div>
+    <div th:each="cost : ${costs}" class="mypage-costItem">
+        <div th:text="${cost.fixedName}" class="mypage-costName">家賃</div>
+        <div>
+            <span>¥</span>
+            <span th:text="${cost.monthlyAmount}">50,000</span>
+        </div>
+        <button type="submit" class="mypage-cost-deleteButton">&times;</button>
+    </div>
 
-    
+    <div class="mypage-addCost">
+        <span>＋固定費を追加</span><br>
+        <form action="/mypage" method="post">
+            <input type="text" value="項目名" class="mypage-addCost-nameForm"><br>
+            <input type="text" value="¥金額" class="mypage-addCost-amountForm"> 
+            <button type="submit" class="mypage-cost-addButton">追加</button>
+        </form>
+    </div>
+
+    <div>
+        <span class="mypage-session">セッション情報</span>
+        <div class="mypage-email">
+            <div class="mypage-user">ログインユーザー</div>
+            <div th:text="${email}" class="mypage-session">メールアドレス</div>
+        </div>
+        <button type="submit" class="mypage-logoutButton">ログアウトする</button>
+    </div>
+
 </body>
 </html>
