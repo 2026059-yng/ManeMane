@@ -9,5 +9,4 @@ public class MyPageController {
     public String GetMethodName() {
         return "mypage";
     }
-    
 }
