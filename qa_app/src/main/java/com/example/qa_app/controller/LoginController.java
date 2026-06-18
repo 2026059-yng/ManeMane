@@ -24,6 +24,7 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@ModelAttribute LoginForm form, HttpSession session) {
         if (loginService.authenticate(form.getEmail(), form.getPassword())) {
+            session.setAttribute("user_id", loginService.saveUserId(form.getEmail()));
             session.setAttribute("email", form.getEmail());
             return "redirect:/home";
         }
