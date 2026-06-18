@@ -9,19 +9,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.qa_app.service.CashFlowService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class CashFlowController {
     private final CashFlowService cashFlowService;
-    public CashFlowController(CashFlowService cashflowservice) {
-    this.cashFlowService = cashFlowService;
+
+    public CashFlowController(CashFlowService cashFlowService) {
+        this.cashFlowService = cashFlowService;
   }
 
   @GetMapping("/cashflow")
-  public String cashflow(@PathVariable int user_id,Model model) {
-    model.addAttribute("cashflow", cashFlowService.calcExpensesThisMonth(user_id));
-    model.addAttribute("cashflow", cashFlowService.showAllThisMonth(user_id) );
-    model.addAttribute("cashflow", cashFlowService.calcExpensesLastMonth(user_id)); 
-    model.addAttribute("cashflow", cashFlowService.showAllLastMonth(user_id));
+  public String cashflow(@PathVariable int user_id, Model model, HttpSession session) {
+    model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(user_id));
+    model.addAttribute("allThisMonth", cashFlowService.showAllThisMonth(user_id) );
+    model.addAttribute("totalExpensesLastMonth", cashFlowService.calcExpensesLastMonth(user_id)); 
+    model.addAttribute("allLastMonth", cashFlowService.showAllLastMonth(user_id));
     return "cashflow";
   }
 
@@ -32,11 +35,3 @@ public class CashFlowController {
   }
 
 }
-
-    
-
-
-
-
-
-
