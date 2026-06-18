@@ -57,14 +57,17 @@
 
 /* 履歴画面の装飾*/
 .cashflow-buttons {
-  margin: 50px
+  margin: 50px auto;
+  width: 205px;
+  height: 30px;
+  background-color: gainsboro;
 }
 
 .cashflow-button {
   width: 100px;
   height: 30px;
   border: none;
-  background-color: gray;
+  text-align: center;
 }
 
 #thisMonth {
@@ -87,7 +90,12 @@
   background-color: white;
 }
 
+.cashflow-screen {
+  position: relative;
+}
+
 .cashflow-this {
+  position: absolute;
   opacity: 1;
   pointer-events: auto;
 }
@@ -103,20 +111,26 @@
 }
 
 .cashflow-last.active {
+  position: absolute;
   opacity: 1;
   pointer-events: auto;
 }
 
 .cashflow-allExpenses {
-  background-color: gray;
+  background-color: gainsboro;
 }
 
 .cashflow-amount {
   color: red;
 }
 
+.cashflow-table {
+  width: 400px;
+  table-layout: fixed;
+}
+
 .cashflow-colNames {
-  background-color: gray;
+  background-color:gainsboro;
 }
 
 .cashflow-out {
