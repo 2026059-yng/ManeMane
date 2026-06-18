@@ -1,18 +1,11 @@
-package com.example.qa_app.model.DTO;
+package com.example.qa_app.model.Entity;
 
-//DTO
-public class User {
-    private Long id;
+public class RegisterForm {
     private String email;
     private String password;
-
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // private boolean isFinCategory;
+    // private String fixedName;
+    // private int monthlyAmount;
 
     public String getEmail() {
         return email;
