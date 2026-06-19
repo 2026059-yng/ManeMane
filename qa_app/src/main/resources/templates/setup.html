@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/css/login.css}" rel="sytlesheet">
-    <title>setup</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
 </head>
+
 <body>
-    <h1>初期パラメータ設定</h1>
-    <div class="setup-income"></div>
-
-    <div class="setup-category">
-
-    </div>
-    <div class="setup-fixed-cost"></div>
-
+    <h2>初期パラメータ設定</h2>
+    <form id="userForm" method="post" action="/register">
+        <h3>収入</h3>
+        <label>金額：</label>
+        <input type="number" id="incomeAmount" min="0">
+        <h3>カテゴリー</h3>
+        <input type="text" id="cat1" value="食費"><br>
+        <input type="text" id="cat2" value="娯楽・交際費"><br>
+        <input type="text" id="cat3" value="その他"><br>
+        <h3>固定費</h3>
+        <div id="fixedCostArea"></div>
+        <button type="button" id="addFixedCost">固定費追加</button>
+        <h3>使用可能金額</h3>
+        <span id="available_amount">0</span>円
+        <!-- ここですべてのデータをJSに格納 -->
+        <input type="hidden" name="allData" id="hiddenAllData">
+        <p><button type="submit">設定完了</button></p>
+    </form>
 </body>
+<script src="/js/SetUpForm.js" defer></script>
+
 </html>
