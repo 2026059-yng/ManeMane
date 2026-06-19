@@ -19,3 +19,30 @@
     max-width: 410px;
   }
 }
+
+
+/* 共通ヘッダー　フラグメント */
+.fragment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid lightblue;
+}
+.fragment-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: dimgray;
+    margin-left: 12px;
+    margin-bottom: 12px;
+}
+.fragment-link {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
+.fragment-link a {
+    text-decoration: none;
+    color: black;
+}

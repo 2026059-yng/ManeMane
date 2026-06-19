@@ -1,9 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const now = now();
-    const y = now.getAllYear;
-    const m = String(now.getMonth() + 1).padStart(2,"0");
-    //padStartは文字列の左を埋める処理
-    //OK 2026-06-01 , NG 2026-6-1
-    const d = String(now.getDate()).padStart(2,"0");
-    document.getElementById("dateValue").value = '{y}-${m}-${d}';
+    const currentDate = new Date();
+    const y = currentDate.getFullYear();
+    const m = String("0" + (currentDate.getMonth() + 1)).slice(-2);
+    const d = String("0" + currentDate.getDate()).slice(-2);
+    document.getElementById("dateValue").value = y + '-' + m + '-' + d;
+
+
 })
+
+function selectInOut(selectInout) {
+    document.getElementById("in_out").value = selectInout;
+}
+
+
+function selectCategory(category_num) {
+    if(category_num == "1"){
+        document.getElementById("category_name").value = document.getElementById('category1').value;
+    }else if(category_num == "2"){
+        document.getElementById("category_name").value = document.getElementById('category2').value;
+    }else{
+        document.getElementById("category_name").value = document.getElementById('category3').value;
+    }
+}

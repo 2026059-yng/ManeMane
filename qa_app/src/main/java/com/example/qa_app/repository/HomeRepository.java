@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 import com.example.qa_app.model.DTO.User;
+import com.example.qa_app.model.Entity.EntryForm;
 import com.example.qa_app.model.DTO.Monthly;
 import com.example.qa_app.model.DTO.Category;
 
@@ -20,7 +21,7 @@ public class HomeRepository {
   // 収入を取得する
   public int findIncome(int user_id) {
     Integer income = jdbcClient
-        .sql("SELECT monthly_amount FROM monthly WHERE user_id = :user_id AND financial_category = TRUE")
+        .sql("SELECT monthly_amount FROM monthly WHERE user_id = :user_id AND financial_category = true")
         .param("user_id", user_id)
         .query(Integer.class)
         .single();
@@ -37,7 +38,7 @@ public class HomeRepository {
         .list();
 
     for (Monthly monthly : costs) {
-      User user = jdbcClient.sql("SELECT * FROM users WHERE user_id = :user_id")
+      User user = jdbcClient.sql("SELECT * FROM users WHERE id = :user_id")
           .param("user_id", user_id)
           .query(User.class)
           .single();
@@ -56,7 +57,7 @@ public class HomeRepository {
         .list();
 
     for (Category category : categories) {
-      User user = jdbcClient.sql("SELECT * FROM users WHERE user_id = :user_id")
+      User user = jdbcClient.sql("SELECT * FROM users WHERE id = :user_id")
           .param("user_id", user_id)
           .query(User.class)
           .single();
@@ -65,6 +66,42 @@ public class HomeRepository {
     }
 
     return categories;
+  }
+
+  //臨時収入合計を取得する(dailyテーブル)
+  public int findExtraIncThisMonth(int user_id){
+    int extraIncome = 0;
+    extraIncome = jdbcClient.sql("select SUM(daily_amount) from daily where user_id = :user_id and in_out = false group by user_id")
+        .param("user_id", user_id)
+        .query(Integer.class)
+        .single();
+
+    return extraIncome;
+  }
+
+  //支出合計を取得する(dailyテーブル)
+  public int findExpensesThisMonth(int user_id){
+    int expenses = 0;
+    expenses = jdbcClient.sql("select SUM(daily_amount) from daily where user_id = :user_id and in_out = true group by user_id")
+        .param("user_id", user_id)
+        .query(Integer.class)
+        .single();
+
+    return expenses;
+  }
+
+
+  //収支データをdailyテーブルに追加（INSERT）
+  public void saveTransaction(EntryForm form, int user_id){
+    boolean in_out = Boolean.valueOf(form.getIn_out());
+
+    jdbcClient.sql("INSERT INTO daily(user_id, date, category_name, in_out, daily_amount) VALUES (:user_id, :date, :category_name, :in_out, :daily_amount)")
+        .param("user_id", user_id)
+        .param("date", form.getDate())
+        .param("category_name", form.getCategory_name())
+        .param("in_out", in_out)
+        .param("daily_amount", form.getDaily_amount())
+        .update();
   }
 
 }

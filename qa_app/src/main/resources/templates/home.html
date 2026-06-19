@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>マネマネ</title>
-  <!-- <link rel="stylesheet" href="/css/home.css"> -->
-  <script src="/js/HomeDate.js"></script>
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
   <div th:replace="~{fragment :: header}"></div>
@@ -15,23 +14,19 @@
     <div class="home-showamount-container">
       <div>
         <span id="home-show-title">使用可能金額</span><br>
-        <!-- <span id="home-show-amount">￥93,000</span> -->
         <span id="home-show-amount" th:text="${availableBalance}">￥93,000</span>
       </div>
       <div class="home-bottomAmount-container">
         <div>
           <span id="home-show-subtitle">月間給料(収入)</span><br>
-          <!-- <span id="home-show-subamount">￥200,000</span> -->
           <span id="home-show-subamount" th:text="${income}">￥200,000</span>
         </div>
           <div>
           <span id="home-show-subtitle">固定費</span><br>
-          <!-- <span id="home-show-subamount">￥95,000</span> -->
           <span id="home-show-subamount" th:text="${fixedCosts}">￥95,000</span>
         </div>
         <div>
           <span id="home-show-subtitle">実支出額(今月)</span><br>
-          <!-- <span id="home-show-subamount">￥11,700</span> -->
           <span id="home-show-subamount" th:text="${actualExpenses}">￥11,700</span>
         </div>
       </div>
@@ -40,14 +35,17 @@
     <div class="home-entry-container">
       <form action="/home" method="post">
   
+        <input type="hidden" name="in_out" id="in_out" value=""/>
+
         <div class="home-transaction-top">
           <div><span id="home-title-button">●</span><span id="home-entry-title">収支を入力</span></div>
-          <div><button class="home-in-button">－使う</button>
-            <button class="home-out-button">＋増やす</button></div>
+          <div><input type="button" value="－使う" onclick='selectInOut("true")' class="home-in-button">
+            <input type="button" value="＋増やす" onclick='selectInOut("false")' class="home-out-button"></div>
         </div>
   
         <div class="home-amount-container">
           <nav id="home-entry-subtitle">金額</nav>
+          <input type="text" name="daily_amount" >
           <div class="home-amountButton-container">
             <button class="home-amount-button">＋100</button>
             <button class="home-amount-button">＋500</button>
@@ -59,21 +57,22 @@
         <div class="home-category-container">
           <nav id="home-entry-subtitle">カテゴリー</nav>
           <div class="home-amountButton-container">
-            <button class="home-category-button"><span>●</span><span th:text="category_name1">食費</span></button>
-            <button class="home-category-button"><span>●</span><span th:text="category_name2">趣味・娯楽</span></button>
-            <button class="home-category-button"><span>●</span><span th:text="category_name3">その他</span></button>
+            <button type="button" class="home-category-button" onclick='selectCategory("1")' id="category1" th:value="${category_name1}"><span>●</span><span th:text="${category_name1}">食費</span></button>
+            <button type="button" class="home-category-button" onclick='selectCategory("2")' id="category2" th:value="${category_name2}"><span>●</span><span th:text="${category_name2}">趣味・娯楽</span></button>
+            <button type="button" class="home-category-button" onclick='selectCategory("3")' id="category3" th:value="${category_name3}"><span>●</span><span th:text="${category_name3}">その他</span></button>
+            <input type="hidden" name="category_name" id="category_name" value=""/>
           </div>
         </div>
     
         <div class="home-date-container">
           <nav id="home-entry-subtitle">日付</nav>
-          <input type="date" name="dataValue" id="dataValue">
+          <input type="date" name="date" id="dateValue" value="dateValue">
         </div>
   
         <button type="submit">記録する</button>
       </form>
     </div>
   </div>
-
 </body>
+<script src="/js/HomeDate.js"></script>
 </html>
