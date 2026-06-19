@@ -32,6 +32,6 @@ public class SetupController {
                 RegisterFrom dto = mapper.readValue(allData, RegisterFrom.class);
                 int userId = (int) session.getAttribute("userId");
                 registerService.register(userId, dto);
-                return "/";
+                return "/home";
             }
         }
