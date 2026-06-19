@@ -81,7 +81,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
     const incomeName = document.getElementById("incomeName").value.trim();
     const incomeAmount = Number(document.getElementById("incomeAmount").value);
     if (!incomeName || incomeAmount < 0) {
-        alert("収入名と金額（0以上）は必須です。");
+        alert("収入の入力（0以上）は必須です。");
         event.preventDefault();
         return;
     }
