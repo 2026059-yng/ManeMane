@@ -19,34 +19,31 @@
             <button class="cashflow-button" id="lastMonth">先月</button>
         </div>
 
-
         <div class="cashflow-screen">
             <div class="cashflow-this">
                 <div class="cashflow-allExpenses">
-                    <h3>今月の使用額（支出のみ）</h3>
-                    <p class="cashflow-amount">￥<span th:text="${totalExpensesThisMonth}">15,000</span>JPY</p>
+                    <p>今月の使用額（支出のみ）</p>
+                    <h2 class="cashflow-amount">￥<span th:text="${totalExpensesThisMonth}">15,000</span>JPY</h2>
                 </div>
                 <div>
-                    <table class="cashflow-table">
+                    <table id="cashflow-table">
                         <tr class="cashflow-colNames">
                             <th>日付</th>
                             <th>カテゴリー</th>
                             <th>金額</th>
+                            <th class="cashflow-deletecol"></th>
                         </tr>
-                        <tr th:each="thisMonth : ${allThisMonth}">
+                        <tr th:each="thisMonth : ${allThisMonth}" class="cashflow-rows">
                             <td th:text="${thisMonth.date}">6/10</td>
                             <td th:text="${thisMonth.categoryName}">趣味・娯楽</td>
-                            <td th:text="${thisMonth.dailyAmount}">
-                                <span th:class="${thisMonth.inOut} == TRUE ? 'cashflow-out' : 'cashflow-in'">
-                                    <p th:if="${thisMonth.inOut}">-</p>
-                                    <p th:unless="${thisMonth.inOut}">+</p>
-                                    ￥5,000
-                                </span>
+                            <td th:text="${thisMonth.inOut} ? '-￥' + ${thisMonth.dailyAmount} : '+￥' + ${thisMonth.dailyAmount}"
+                                th:classappend="${thisMonth.inOut} ? 'cashflow-out' : 'cashflow-in'">
+                                -￥5,000
                             </td>
                             <td>
                                 <form th:action="@{/cashflow/{id}/delete(id=${thisMonth.id})}" method="post">
                                     <button type="submit" class="cashflow-delete"
-                                        onclick="return confirm('本当に削除しますか？');">×</button>
+                                        onclick="return confirm('本当に削除しますか？');">✖</button>
                                 </form>
                             </td>
                         </tr>
@@ -56,40 +53,32 @@
 
             <div class="cashflow-last">
                 <div class="cashflow-allExpenses">
-                    <h3>先月の使用額（支出のみ）</h3>
-                    <p class="cashflow-amount">￥<span th:text="${totalExpensesLastMonth}">15,000</span>JPY</p>
+                    <p>先月の使用額（支出のみ）</p>
+                    <h2 class="cashflow-amount">￥<span th:text="${totalExpensesLastMonth}">15,000</span>JPY</h2>
                 </div>
                 <div>
-                    <table class="cashflow-table">
+                    <table id="cashflow-table">
                         <tr class="cashflow-colNames">
                             <th>日付</th>
                             <th>カテゴリー</th>
                             <th>金額</th>
+                            <th class="cashflow-deletecol"></th>
                         </tr>
-                        <tr th:each="lastMonth : ${allLastMonth}">
+                        <tr th:each="lastMonth : ${allLastMonth}" class="cashflow-rows">
                             <td th:text="${lastMonth.date}">6/10</td>
                             <td th:text="${lastMonth.categoryName}">趣味・娯楽</td>
-                            <td th:text="${lastMonth.dailyAmount}"><span
-                                    th:class="${lastMonth.inOut} == TRUE ? 'cashflow-out' : 'cashflow-in'">
-                                    <p th:if="${lastMonth.inOut}">-</p>
-                                    <p th:unless="${lastMonth.inOut}">+</p>
-                                    ￥5,000
-                                </span>
+                            <td th:text="${lastMonth.inOut} ? '-￥' + ${lastMonth.dailyAmount} : '+￥' + ${lastMonth.dailyAmount}"
+                                th:classappend="${lastMonth.inOut} ? 'cashflow-out' : 'cashflow-in'">
+                                -￥5,000
                             </td>
-                            <td>
-                                <form th:action="@{/cashflow/{id}/delete(id=${lastMonth.id})}" method="post">
-                                    <button type="submit" class="cashflow-delete"
-                                        onclick="return confirm('本当に削除しますか？');">×</button>
-                                </form>
-                            </td>
+                            <td></td>
                         </tr>
                     </table>
                 </div>
             </div>
+            
         </div>
-
     </main>
-
 </body>
 
 </html>

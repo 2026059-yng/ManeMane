@@ -24,3 +24,4 @@ buttonB.addEventListener('click', function(){
     screenA.classList.add('active');
     screenB.classList.add('active');
 });
+

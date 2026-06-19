@@ -57,17 +57,18 @@
 
 /* 履歴画面の装飾*/
 .cashflow-buttons {
-  margin: 50px auto;
-  width: 205px;
-  height: 30px;
+  margin: 30px auto;
+  padding: 5px;
+  width: 220px;
   background-color: gainsboro;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .cashflow-button {
   width: 100px;
   height: 30px;
   border: none;
-  text-align: center;
 }
 
 #thisMonth {
@@ -118,19 +119,41 @@
 
 .cashflow-allExpenses {
   background-color: gainsboro;
+  border-radius: 15px;
+  text-align: center;
+  height: 100px;
+  padding: 1em;
+  margin: 20px;
 }
 
 .cashflow-amount {
   color: red;
 }
 
-.cashflow-table {
-  width: 400px;
+#cashflow-table {
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
   table-layout: fixed;
+  text-align: center;
+  margin: 20px;
 }
 
 .cashflow-colNames {
-  background-color:gainsboro;
+  background-color: gainsboro;
+  height: 40px;
+}
+
+.cashflow-deletecol {
+  background-color: white
+}
+
+th.cashflow-deletecol {
+  width: 40px;
+}
+
+.cashflow-rows {
+  height: 40px;
 }
 
 .cashflow-out {
@@ -138,5 +161,15 @@
 }
 
 .cashflow-in {
-  color: greenyellow;
+  color: limegreen;
+}
+
+.cashflow-delete {
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 255, 0.5);
+}
+
+.cashflow-delete:hover {
+  color: blue;
 }
