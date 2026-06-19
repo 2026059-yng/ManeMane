@@ -35,6 +35,7 @@ public class HomeController{
 
         session.setAttribute("user_id", 1);
         Integer user_id = (Integer)session.getAttribute("user_id");
+        
         List<Integer> amounts = homeService.returnAmounts(user_id);
 
         List<Category> categories = homeService.showCategories(user_id);

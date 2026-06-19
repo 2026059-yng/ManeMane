@@ -45,13 +45,14 @@
   
         <div class="home-amount-container">
           <nav id="home-entry-subtitle">金額</nav>
-          <input type="text" name="daily_amount" >
+          <input type="text" name="daily_amount" id="daily_amount">
           <div class="home-amountButton-container">
-            <button class="home-amount-button">＋100</button>
-            <button class="home-amount-button">＋500</button>
-            <button class="home-amount-button">＋1,000</button>
-            <button class="home-amount-button">＋10,000</button>
+            <button type="button" id="button1" onclick='calcAmount("button1")' class="home-amount-button">＋100</button>
+            <button type="button" id="button2" onclick='calcAmount("button2")' class="home-amount-button">＋500</button>
+            <button type="button" id="button3" onclick='calcAmount("button3")' class="home-amount-button">＋1,000</button>
+            <button type="button" id="button4" onclick='calcAmount("button4")' class="home-amount-button">＋10,000</button>
           </div>
+          <button type="button" id="button5" onclick='calcAmount("button5")' class="home-clear-button">金額をクリア</button>
         </div>
     
         <div class="home-category-container">
