@@ -60,11 +60,6 @@ public class HomeController{
     @PostMapping("/home")
     public String EntryTransaction(@ModelAttribute EntryForm form, HttpSession session) {
         session.setAttribute("user_id", 1);
-        
-        System.out.println(form.getIn_out());
-        System.out.println(form.getCategory_name());
-        System.out.println(form.getDate());
-
         Integer user_id = (Integer)session.getAttribute("user_id");
 
         homeService.saveTransaction(form, user_id);
