@@ -43,9 +43,9 @@ public class HomeController{
 
         for (Category category : categories) {
           category_names.add(category.getCategory_name());
-        }        
+        }
 
-        model.addAttribute("monthlyBudget", amounts.get(0));
+        model.addAttribute("availableBalance", amounts.get(0));
         model.addAttribute("income", amounts.get(1));
         model.addAttribute("fixedCosts", amounts.get(2));
         model.addAttribute("actualExpenses", amounts.get(3));
