@@ -27,10 +27,8 @@ public class Daily {
         return dailyAmount;
     }
 
-   public void setCategoryName(String categoryName){
-     this.categoryName=categoryName;
-   }
-
-    
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
 }

@@ -1,8 +1,13 @@
 package com.example.qa_app.repository;
 
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.Optional;
+import java.util.stream.Gatherer.Integrator;
+
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+
+import com.example.qa_app.model.DTO.User;
 
 @Repository
 public class LoginRepository {
@@ -18,5 +23,13 @@ public class LoginRepository {
                 .param("email", email)
                 .query(String.class)
                 .optional();
+    }
+
+    // ユーザーIDの取得
+    public int findUserId(String email){
+        return jdbcClient.sql("SELECT id FROM users WHERE email = :email")
+                .param("email", email)
+                .query(Integer.class)
+                .single();
     }
 }

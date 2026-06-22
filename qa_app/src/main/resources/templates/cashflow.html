@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/qa_app/src/main/resources/static/css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <!-- 画面切り替え用jsを追加 -->
+    <script src="/js/CashFlowSwitch.js" defer></script>
     <title>履歴画面</title>
 </head>
 
@@ -53,3 +56,66 @@
 
 
 
+        <div class="cashflow-screen">
+            <div class="cashflow-this">
+                <div class="cashflow-allExpenses">
+                    <p>今月の使用額（支出のみ）</p>
+                    <h2 class="cashflow-amount">￥<span th:text="${totalExpensesThisMonth}">15,000</span>JPY</h2>
+                </div>
+                <div>
+                    <table id="cashflow-table">
+                        <tr class="cashflow-colNames">
+                            <th>日付</th>
+                            <th>カテゴリー</th>
+                            <th>金額</th>
+                            <th class="cashflow-deletecol"></th>
+                        </tr>
+                        <tr th:each="thisMonth : ${allThisMonth}" class="cashflow-rows">
+                            <td th:text="${thisMonth.date}">6/10</td>
+                            <td th:text="${thisMonth.categoryName}">趣味・娯楽</td>
+                            <td th:text="${thisMonth.inOut} ? '-￥' + ${thisMonth.dailyAmount} : '+￥' + ${thisMonth.dailyAmount}"
+                                th:classappend="${thisMonth.inOut} ? 'cashflow-out' : 'cashflow-in'">
+                                -￥5,000
+                            </td>
+                            <td>
+                                <form th:action="@{/cashflow/{id}/delete(id=${thisMonth.id})}" method="post">
+                                    <button type="submit" class="cashflow-delete"
+                                        onclick="return confirm('本当に削除しますか？');">✖</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cashflow-last">
+                <div class="cashflow-allExpenses">
+                    <p>先月の使用額（支出のみ）</p>
+                    <h2 class="cashflow-amount">￥<span th:text="${totalExpensesLastMonth}">15,000</span>JPY</h2>
+                </div>
+                <div>
+                    <table id="cashflow-table">
+                        <tr class="cashflow-colNames">
+                            <th>日付</th>
+                            <th>カテゴリー</th>
+                            <th>金額</th>
+                            <th class="cashflow-deletecol"></th>
+                        </tr>
+                        <tr th:each="lastMonth : ${allLastMonth}" class="cashflow-rows">
+                            <td th:text="${lastMonth.date}">6/10</td>
+                            <td th:text="${lastMonth.categoryName}">趣味・娯楽</td>
+                            <td th:text="${lastMonth.inOut} ? '-￥' + ${lastMonth.dailyAmount} : '+￥' + ${lastMonth.dailyAmount}"
+                                th:classappend="${lastMonth.inOut} ? 'cashflow-out' : 'cashflow-in'">
+                                -￥5,000
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+</body>
+
+</html>
