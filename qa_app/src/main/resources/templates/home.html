@@ -10,21 +10,25 @@
   <div th:replace="~{fragment :: header}"></div>
   
   <div class="home-container">
-
+    <!-- 使用可能金額・収入・固定費合計・実支出額を表示 -->
     <div class="home-showamount-container">
+      <!-- 使用可能金額を表示 -->
       <div class="home-topAmount-container">
         <span id="home-show-title">使用可能金額</span><br>
         <span class="home-show-amount" th:text="'¥' + ${#numbers.formatInteger(availableBalance,3,'COMMA')}">￥93,000</span>
       </div>
       <div class="home-bottomAmount-container">
+        <!-- 収入を表示 -->
         <div class="home-subAmount-container">
           <span id="home-show-subtitle">月間給料(収入)</span><br>
           <span class="home-show-subamount" th:text="'¥' + ${#numbers.formatInteger(income,3,'COMMA')}">￥200,000</span>
         </div>
+        <!-- 固定費合計を表示 -->
         <div class="home-subAmount-container">
           <span id="home-show-subtitle">固定費</span><br>
           <span class="home-show-subamount" th:text="'¥' + ${#numbers.formatInteger(fixedCosts,3,'COMMA')}">￥95,000</span>
         </div>
+        <!-- 実支出額を表示 -->
         <div class="home-subAmount-container">
           <span id="home-show-subtitle">実支出額(今月)</span><br>
           <span class="home-show-subamount-last" th:text="'¥' + ${#numbers.formatInteger(actualExpenses,3,'COMMA')}">￥11,700</span>
@@ -32,17 +36,19 @@
       </div>
     </div>
   
+    <!-- 収支を入力するフォーム -->
     <div class="home-entry-container">
       <form action="/home" method="post">
   
+        <!-- true(使う) / false(増やす)をvalueに格納するための input type="hidden" -->
         <input type="hidden" name="in_out" id="in_out" value=""/>
-
         <div class="home-transaction-top">
           <div class="home-title-container"><div id="home-title-circle">●</div><span id="home-entry-title">収支を入力</span></div>
           <div><input type="button" value="－使う" onclick='selectInOut("true")' class="home-out-button" id="home-out-button">
             <input type="button" value="＋増やす" onclick='selectInOut("false")' class="home-in-button" id="home-in-button"></div>
         </div>
   
+        <!-- 金額を入力するコンテナ -->
         <div class="home-amount-container">
           <nav id="home-entry-subtitle">金額</nav>
           <div class="home-amount-fakeform">
@@ -54,9 +60,10 @@
             <button type="button" id="home-button2" onclick='calcAmount("button2")' class="home-amount-button">＋500</button>
             <button type="button" id="home-button3" onclick='calcAmount("button3")' class="home-amount-button">＋1,000</button>
             <button type="button" id="home-button4" onclick='calcAmount("button4")' class="home-amount-button">＋10,000</button>          </div>
-          <button type="button" id="home-button5" onclick='calcAmount("button5")' class="home-clear-button">金額をクリア</button>
+          <button type="button" id="home-button5" onclick='calcAmount("button5")' class="home-clear-button"><span>金額をクリア</span></button>
         </div>
     
+        <!-- カテゴリーを入力するコンテナ -->
         <div class="home-category-container">
           <nav id="home-entry-subtitle">カテゴリー</nav>
           <div class="home-cateButton-container">
@@ -67,9 +74,10 @@
           </div>
         </div>
     
+        <!-- 日付を入力するコンテナ -->
         <div class="home-date-container">
           <nav id="home-entry-subtitle">日付</nav>
-          <input type="date" name="date" id="dateValue" value="dateValue" class="home-date-input">
+          <input type="date" name="date" id="dateValue" value="dateValue" class="home-date-input" min="" max="">
         </div>
   
         <button type="submit" class="home-submit-button" id="home-submit-button">記録する</button>

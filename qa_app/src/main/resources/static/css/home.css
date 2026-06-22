@@ -315,13 +315,17 @@ th.cashflow-deletecol {
 }
 .home-clear-button{
   align-items: center;
-  background-color: rgb(214, 214, 214);
+  background-color: rgb(173, 173, 173);
   padding: 8px 12px;
   margin-top: 8px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: none;
   width: 100%;
   justify-content: center;
+}
+.home-clear-button span{
+  font-weight: bold;
+  color: white;
 }
 .home-category-container{
   margin-top: 12px;
@@ -390,3 +394,4 @@ th.cashflow-deletecol {
 .home-submit-button.in{
   background-color: rgb(14, 214, 114);
 }
+/* ホーム画面ここまで */

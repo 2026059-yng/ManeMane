@@ -71,7 +71,7 @@ public class HomeRepository {
   //臨時収入合計を取得する(dailyテーブル)
   public int findExtraIncThisMonth(int user_id){
     int extraIncome = 0;
-    extraIncome = jdbcClient.sql("select SUM(daily_amount) from daily where user_id = :user_id and in_out = false group by user_id")
+    extraIncome = jdbcClient.sql("SELECT SUM(daily_amount) FROM daily WHERE user_id = :user_id AND in_out = false AND date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND CURRENT_DATE GROUP BY user_id")
         .param("user_id", user_id)
         .query(Integer.class)
         .single();
@@ -82,14 +82,13 @@ public class HomeRepository {
   //支出合計を取得する(dailyテーブル)
   public int findExpensesThisMonth(int user_id){
     int expenses = 0;
-    expenses = jdbcClient.sql("select SUM(daily_amount) from daily where user_id = :user_id and in_out = true group by user_id")
+    expenses = jdbcClient.sql("SELECT SUM(daily_amount) FROM daily WHERE user_id = :user_id AND in_out = true AND date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND CURRENT_DATE GROUP BY user_id")
         .param("user_id", user_id)
         .query(Integer.class)
         .single();
 
     return expenses;
   }
-
 
   //収支データをdailyテーブルに追加（INSERT）
   public void saveTransaction(EntryForm form, int user_id){

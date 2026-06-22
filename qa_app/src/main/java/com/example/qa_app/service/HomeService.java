@@ -45,12 +45,9 @@ public class HomeService extends BaseService{
       return amounts;
   }
 
-
   //データベースに収支を書き込む
   public void saveTransaction(EntryForm form, int user_id){
     homeRepository.saveTransaction(form, user_id);
   }
-
-
 
 }
