@@ -16,10 +16,18 @@ public class LoginService {
     }
 
     public boolean authenticate(String email, String password) {
-        Optional<String> hash = loginRepository.findpasswordHash(email);
-            if (hash.isEmpty()) {
-                return false;
-            }
-            return passwordEncoder.matches(password, hash.get());
+        if (email == null || password == null || email.isBlank() || password.isBlank()) {
+            return false;
         }
+        Optional<String> hash = loginRepository.findpasswordHash(email);
+        if (hash.isEmpty()) {
+            return false;
+        }
+        return passwordEncoder.matches(password, hash.get());
+    }
+
+    public int saveUserId(String email) { //userid
+        return loginRepository.findUserId(email);
+    }
+
 }

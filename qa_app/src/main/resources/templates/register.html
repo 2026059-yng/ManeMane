@@ -3,14 +3,14 @@
 <html xmlns:th="http://www.thymeleaf.org"></html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" th:href="@{/css/login.css}">
     <title>新規登録</title>
 
 </head>
 <body>
 
-    <div class="register-contaier" id="register-contaier">
+    <div class="register-container" id="register-container">
         <div class="register-logo">マネマネ</div>
 
         <div class="register-card">
@@ -24,16 +24,17 @@
 
                 <div class="register-form-group">
                     <label for="email">メールアドレス</label>
-                    <input type="email" name="email" id="email" required>
+                    <input type="email" th:field="*{email}" id="email" required>
                 </div>
                 <br>
                 <div class="register-form-group">
                     <label for="password">パスワード</label>
-                    <input type="password" name="password" id="password" required>
+                    <input type="password" th:field="*{password}" id="password" required>
                 </div>
                 <br>
                 <button type="submit" class="register-btn">新規アカウント作成</button>
             </form>
+            <br>
             <a th:href="@{/login}" class="login-link">ログインはこちら</a>
         </div>
 </body>
