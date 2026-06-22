@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RegisterFrom {
+public class RegisterForm {
     // 新規登録時に使用
     private String email;
     private String password;
