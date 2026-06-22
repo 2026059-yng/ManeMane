@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.qa_app.model.DTO.Monthly;
 import com.example.qa_app.model.DTO.User;
 import com.example.qa_app.model.Entity.RegisterForm;
 import com.example.qa_app.repository.RegisterRepository;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class RegisterService {
@@ -20,7 +22,7 @@ public class RegisterService {
         this.registerRepository = registerRepository;
     }
 
-    public int registerUser(RegisterForm form) { // ユーザ新規登録
+    public long registerUser(RegisterForm form) { // ユーザ新規登録
         if (registerRepository.existsByEmail(form.getEmail())) { // 例外処理
             throw new IllegalArgumentException("メールアドレスは既に使用されています");
         }
@@ -29,14 +31,22 @@ public class RegisterService {
         String hashedPassword = passwordEncoder.encode(form.getPassword());
         user.setPassword(hashedPassword);
         registerRepository.save(user);
-        // registerRepository.setupsave(
-        //     user_id,
-        //     true,
-        //     200000;
-        // )
-        // for (int i = 0; i < 0; i++) {
 
-        // }
+        long userId = registerRepository.findUserEmail(user.getEmail());
+        registerRepository.registerSaveIncome(
+            userId,
+            true,
+            "収入",
+            200000
+        );
+        List<String> defaultCategories = Arrays.asList("食費","趣味・娯楽","その他");
+        for (int i = 0; i < defaultCategories.size(); i++) {
+            registerRepository.registerSaveCategory(
+                userId,
+                defaultCategories.get(i)
+            );
+        }
+
         return registerRepository.findUserEmail(user.getEmail()); 
     }
 

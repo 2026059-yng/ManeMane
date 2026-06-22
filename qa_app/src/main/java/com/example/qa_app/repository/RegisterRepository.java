@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.example.qa_app.model.DTO.Monthly;
 import com.example.qa_app.model.DTO.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
 @Repository
@@ -34,19 +35,29 @@ public class RegisterRepository {
                 .update();
     }
 
-    public void registersave(User user, Monthly monthly) { //カテゴリと金額の取得
-        String sql = "INSERT INTO monthly (user_id, financial_category, monthly_amount) VALUES (?, ?, ?)";
+    public void registerSaveIncome(long userId, boolean isFinCategory, String fixedName, int monthlyAmount) { // 収入の初期設定
+        String sql = "INSERT INTO monthly (user_id, financial_category, fixed_name, monthly_amount) VALUES (:userId, :isFinCategory, :fixedName, :monthlyAmount)";
         jdbcClient.sql(sql)
-                .param("financial_category", monthly.isFinCategory())
-                .param("monthly_amount", monthly.getMonthlyAmount())
+                .param("userId", userId)
+                .param("isFinCategory", isFinCategory)
+                .param("fixedName", fixedName)
+                .param("monthlyAmount", monthlyAmount)
                 .update();
     }
 
-    public int findUserEmail(String email) { // userid取得処理(int)
+    public void registerSaveCategory(long userId, String categoryName) { // カテゴリの初期値を設定
+        String sql = "INSERT INTO categories (user_id, category_name) VALUES (:userId, :categoryName)";
+        jdbcClient.sql(sql)
+                .param("userId", userId)
+                .param("categoryName", categoryName)
+                .update();
+    }
+
+    public long findUserEmail(String email) { // userid取得処理
         return jdbcClient.sql("SELECT id FROM users WHERE email = :email")
                 .param("email", email)
                 .query(Integer.class)
                 .single();
-    
+
     }
 }
