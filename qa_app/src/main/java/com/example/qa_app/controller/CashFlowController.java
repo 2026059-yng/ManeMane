@@ -22,7 +22,7 @@ public class CashFlowController {
   @GetMapping("/cashflow")
   public String cashflow(Model model, HttpSession session) {
     // 検証用
-    session.setAttribute("user_id", 1);
+    // session.setAttribute("user_id", 1);
     // user_idをセッションから取得
     int user_id = (int) session.getAttribute("user_id");
     model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(user_id));
