@@ -49,7 +49,7 @@ public class MyPageService extends BaseService {
 
     //固定費の項目を削除する
     public void deleteCost(int user_id, Long id, Monthly monthly) {
-        if (monthly.isFinancial_category() == false) {
+        if (monthly.isFinCategory() == false) {
             myPageRepository.deleteCost(user_id, id);
         }
     }
