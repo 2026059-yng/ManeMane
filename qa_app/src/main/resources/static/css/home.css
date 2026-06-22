@@ -1,19 +1,24 @@
 @media screen and (min-width:320px) {
-    /*　画面サイズが320pxからはここを読み込む　*/
-  body{
+
+  /*　画面サイズが320pxからはここを読み込む　*/
+  body {
     margin: 20px;
   }
 }
+
 @media screen and (min-width:380px) and (max-width:451px) {
-    /*　画面サイズが380pxから450pxまではここを読み込む　*/
-  body{
+
+  /*　画面サイズが380pxから450pxまではここを読み込む　*/
+  body {
     margin: 30px;
     max-width: 410px;
   }
 }
+
 @media screen and (min-width:1030px) {
-    /*　画面サイズが1030pxからはここを読み込む　*/
-  body{
+
+  /*　画面サイズが1030pxからはここを読み込む　*/
+  body {
     margin-inline: auto;
     margin-top: 30px;
     max-width: 410px;
@@ -22,27 +27,149 @@
 
 /* 共通ヘッダー　フラグメント */
 .fragment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 5px solid lightblue;
-}
-.fragment-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: dimgray;
-    margin-left: 12px;
-    margin-bottom: 12px;
-}
-.fragment-link {
-    display: flex;
-    gap: 12px;
-    font-size: 12px;
-    margin-bottom: 12px;
-    margin-right: 12px;
-}
-.fragment-link a {
-    text-decoration: none;
-    color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 5px solid lightblue;
 }
 
+.fragment-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: dimgray;
+  margin-left: 12px;
+  margin-bottom: 12px;
+}
+
+.fragment-link {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  margin-bottom: 12px;
+  margin-right: 12px;
+}
+
+.fragment-link a {
+  text-decoration: none;
+  color: black;
+}
+
+
+/* 履歴画面の装飾*/
+.cashflow-buttons {
+  margin: 30px auto;
+  padding: 5px;
+  width: 220px;
+  background-color: gainsboro;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.cashflow-button {
+  width: 100px;
+  height: 30px;
+  border: none;
+}
+
+#thisMonth {
+  color: black;
+  background-color: white;
+}
+
+#thisMonth.active {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+}
+
+#lastMonth {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+}
+
+#lastMonth.active {
+  color: black;
+  background-color: white;
+}
+
+.cashflow-screen {
+  position: relative;
+}
+
+.cashflow-this {
+  position: absolute;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cashflow-this.active {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cashflow-last {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cashflow-last.active {
+  position: absolute;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cashflow-allExpenses {
+  background-color: gainsboro;
+  border-radius: 15px;
+  text-align: center;
+  height: 100px;
+  padding: 1em;
+  margin: 20px;
+}
+
+.cashflow-amount {
+  color: red;
+}
+
+#cashflow-table {
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  margin: 20px;
+}
+
+.cashflow-colNames {
+  background-color: gainsboro;
+  height: 40px;
+}
+
+.cashflow-deletecol {
+  background-color: white
+}
+
+th.cashflow-deletecol {
+  width: 40px;
+}
+
+.cashflow-rows {
+  height: 40px;
+}
+
+.cashflow-out {
+  color: red;
+}
+
+.cashflow-in {
+  color: limegreen;
+}
+
+.cashflow-delete {
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 255, 0.5);
+}
+
+.cashflow-delete:hover {
+  color: blue;
+}
