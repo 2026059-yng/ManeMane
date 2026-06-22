@@ -1,18 +1,91 @@
 <!DOCTYPE html>
-<html lang=ja>
-<html xmlns:th="http://www.thymeleaf.org">
-
-</html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
-    <title>パラメータ設定</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/setup.css">
+    <title>初期パラメータ設定</title>
 </head>
 
 <body>
-    <p>テスト</p>
+
+    <h2>初期パラメータ設定</h2>
+
+    <form id="userForm" method="post" action="/register">
+
+        <!-- 収入 -->
+        <div class="setup-card">
+            <h3>収入</h3>
+
+            <div class="setup-inputArea">
+                <label>¥</label>
+                <input type="text" id="incomeAmount" class="numberOnly" inputmode="numeric" placeholder="手取り収入">
+            </div>
+        </div>
+
+        <!-- カテゴリー -->
+        <div class="setup-card">
+            <h3>カテゴリー</h3>
+
+            <div class="setup-categoryRow">
+                <span class="setup-dot-red">●</span>
+                <input type="text" id="cat1" value="食費" class="setup-input">
+            </div>
+
+            <div class="setup-categoryRow">
+                <span class="setup-dot-yellow">●</span>
+                <input type="text" id="cat2" value="娯楽・交際費" class="setup-input">
+            </div>
+
+            <div class="setup-categoryRow">
+                <span class="setup-dot-black">●</span>
+                <input type="text" id="cat3" value="その他" class="setup-input">
+            </div>
+        </div>
+
+        <!-- 固定費 -->
+        <div class="setup-card">
+
+            <div class="setup-costHeader">
+                <h3>固定費</h3>
+
+                <button type="button" id="addFixedCost" class="setup-addButton">
+                    ＋追加
+                </button>
+            </div>
+
+            <div id="fixedCostArea"></div>
+
+        </div>
+
+        <!-- 使用可能金額 -->
+        <div class="setup-budgetBox">
+
+            <div class="setup-budgetTitle">
+                使用可能金額
+            </div>
+
+            <div class="setup-budgetAmount">
+                ¥<span id="available_amount">0</span>
+            </div>
+
+            <p id="availableError">
+                固定費が収入を超えています。
+            </p>
+
+        </div>
+
+        <input type="hidden" name="allData" id="hiddenAllData">
+
+        <button type="submit" class="setup-submitButton">
+            設定完了
+        </button>
+
+    </form>
+
+    <script src="/js/SetUpForm.js"></script>
+
 </body>
 
 </html>

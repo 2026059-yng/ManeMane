@@ -2,10 +2,8 @@ package com.example.qa_app.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.qa_app.model.DTO.Monthly;
 import com.example.qa_app.model.DTO.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
 @Repository
