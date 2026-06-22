@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class SetupController {
 
-    private final SetupService setupRepository;
+    private final SetupService setupService;
 
     @GetMapping("/setup")
     public String getRegister() {
@@ -28,8 +28,8 @@ public class SetupController {
             @RequestParam String allData,HttpSession session) throws Exception {
                 ObjectMapper mapper = new ObjectMapper();
                 RegisterFrom registerFrom = mapper.readValue(allData, RegisterFrom.class);
-                int userId = (int) session.getAttribute("userId");
-                setupRepository.setup(userId, registerFrom);
+                long userId = (long) session.getAttribute("userId");
+                setupService.setup(userId, registerFrom);
                 return "/home";
             }
         }
