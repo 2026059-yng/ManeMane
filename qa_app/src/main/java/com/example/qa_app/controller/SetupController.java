@@ -11,10 +11,8 @@ import com.example.qa_app.model.Entity.RegisterFrom;
 import com.example.qa_app.service.SetupService;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
 @RequiredArgsConstructor
-
 public class SetupController {
 
     private final SetupService setupRepository;
