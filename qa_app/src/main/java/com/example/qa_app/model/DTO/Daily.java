@@ -1,7 +1,11 @@
 package com.example.qa_app.model.DTO;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.sql.Date;
 
+@Getter
+@Setter
 public class Daily {
     private int id;
     private Date date;
@@ -16,29 +20,4 @@ public class Daily {
         this.inOut = inOut;
         this.dailyAmount = dailyAmount;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public boolean isInOut() {
-        return inOut;
-    }
-
-    public int getDailyAmount() {
-        return dailyAmount;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
 }

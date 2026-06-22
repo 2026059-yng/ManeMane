@@ -12,7 +12,7 @@ public class LoginRepository {
         this.jdbcClient = jdbcClient;
     }
 
-    public Optional<String> findpasswordHash(String email) {
+    public Optional<String> findpasswordHash(String email) { //ハッシュのパス取得
         String sql = ("SELECT password FROM users WHERE email = :email");
         return jdbcClient.sql(sql)
                 .param("email", email)
@@ -20,11 +20,11 @@ public class LoginRepository {
                 .optional();
     }
 
-    // ユーザーIDの取得
-    public int findUserId(String email){
+    public int findUserId(String email) { //userid取得処理
         return jdbcClient.sql("SELECT id FROM users WHERE email = :email")
                 .param("email", email)
                 .query(Integer.class)
                 .single();
     }
+
 }
