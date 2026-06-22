@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.qa_app.model.DTO.User;
-import com.example.qa_app.model.Entity.RegisterForm;
+import com.example.qa_app.model.Entity.RegisterFrom;
 import com.example.qa_app.repository.RegisterRepository;
 
 import java.util.Arrays;
@@ -22,7 +22,7 @@ public class RegisterService {
         this.registerRepository = registerRepository;
     }
 
-    public long registerUser(RegisterForm form) { // ユーザ新規登録
+    public long registerUser(RegisterFrom form) { // ユーザ新規登録
         if (registerRepository.existsByEmail(form.getEmail())) { // 例外処理
             throw new IllegalArgumentException("メールアドレスは既に使用されています");
         }
