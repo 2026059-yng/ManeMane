@@ -1,0 +1,189 @@
+/* スマホ向け */
+
+body {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    font-family: sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin: 0;
+}
+
+/* カード */
+.setup-card {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* 収入入力 */
+.setup-inputArea {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background: ghostwhite;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+/* 円マークのラベル */
+.setup-inputArea label {
+    margin-right: 10px;
+}
+
+/* 収入入力のテキストフィールド */
+.setup-inputArea input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+/* カテゴリー */
+.setup-input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: ghostwhite;
+}
+
+.setup-categoryRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.setup-categoryRow .setup-input {
+    margin-top: 0;
+    flex: 1;
+}
+
+/* カテゴリーの色 */
+.setup-dot-red {
+    color: red;
+    font-size: 14px;
+}
+
+.setup-dot-yellow {
+    color: gold;
+    font-size: 14px;
+}
+
+.setup-dot-black {
+    color: black;
+    font-size: 14px;
+}
+
+/* 固定費 */
+.setup-costHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fixedCost {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.fixedName {
+    width: 45%;
+}
+
+.fixedAmount {
+    width: 35%;
+}
+
+.fixedName,
+.fixedAmount {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: ghostwhite;
+}
+
+.deleteBtn {
+    border: none;
+    background: red;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.setup-addButton {
+    border: none;
+    background: blue;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* 使用可能金額 */
+.setup-budgetBox {
+    background: dodgerblue;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.setup-budgetTitle {
+    color: white;
+    font-size: 13px;
+}
+
+.setup-budgetAmount {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+#availableError {
+    display: none;
+    color: #ffdddd;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* 送信ボタン */
+.setup-submitButton {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* 送信ボタンのホバー効果 */
+.setup-submitButton:hover {
+    opacity: 0.9;
+}
+
+/* PC */
+@media screen and (min-width: 1030px) {
+    body {
+        margin-top: 30px;
+    }
+}

@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private Long id;
+    private long id;
     private String email;
     private String password;
     private LocalDateTime created_at;

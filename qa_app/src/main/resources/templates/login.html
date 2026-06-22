@@ -16,6 +16,9 @@
         <div class="login-card">
             <h2>ログイン</h2>
 
+            <div class="login-error-message" th:if="${error}" th:text="${error}">
+            </div>
+
             <form th:action="@{/login}" method="post">
                 <div class="login-form-group">
                     <label for="email">メールアドレス</label>
@@ -29,9 +32,6 @@
                 <br>
                 <button type="submit" class="login-btn">ログイン</button>
             </form>
-
-            <div class="login-error-message" th:if="${error}">メールアドレス または パスワードが間違っています</div>
-
             <br>
             <a th:href="@{/register}" class="register-link">新規登録はこちら</a>
         </div>
