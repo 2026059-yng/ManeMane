@@ -20,6 +20,32 @@
   }
 }
 
+/* 共通ヘッダー　フラグメント */
+.fragment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid lightblue;
+}
+.fragment-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: dimgray;
+    margin-left: 12px;
+    margin-bottom: 12px;
+}
+.fragment-link {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
+.fragment-link a {
+    text-decoration: none;
+    color: black;
+}
+
 /* 今月の使用可能金額 */
 .mypage-monthlyBudget {
     background-color: dodgerblue;
@@ -39,7 +65,8 @@
     padding-left: 8px;
 }
 .mypage-monthlyBudgetAmount span {
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: 700;
     color: white;
 }
 
@@ -151,6 +178,14 @@
     margin-top: 8px;
     border: 1px solid #ccc;
 }
+.mypage-deleteForm {
+    width: 100%;
+}
+.mypage-oneCost {
+    display: flex;
+    justify-content: space-between; /* これが端と端に寄せる*/
+    align-items: center;            /* 必要に応じて上下中央揃えに */
+}
 .mypage-costName {
     color: gray;
     font-size: 12px;
@@ -166,6 +201,7 @@
     gap: 8px;
 }
 .mypage-cost-deleteButton {
+    display: flex;
     background: transparent; /* 背景を透明にする */
     border: none;          
     outline: none;
