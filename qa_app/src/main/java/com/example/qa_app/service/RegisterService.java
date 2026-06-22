@@ -1,35 +1,5 @@
 package com.example.qa_app.service;
 
-import org.springframework.stereotype.Service;
-import com.example.qa_app.model.Entity.RegisterFrom;
-import com.example.qa_app.repository.RegisterRepository;
-import lombok.RequiredArgsConstructor;
-
-@Service
-@RequiredArgsConstructor
 public class RegisterService {
 
-    private final RegisterRepository registerRepository;
-
-    public void register(int userId,RegisterFrom registerFrom) {
-        // 収入
-        registerRepository.incomeInsert(
-                userId,
-                true,
-                registerFrom.getIncomeAmount());
-        // 固定費
-        if (registerFrom.getFixedNames() != null) {
-            for (int i = 0; i < registerFrom.getFixedNames().size(); i++) {
-                registerRepository.fixedInsert(
-                        userId,
-                        false,
-                        registerFrom.getFixedNames().get(i),
-                        registerFrom.getFixedAmounts().get(i));
-            }
-        }
-        // カテゴリ
-        for (String category : registerFrom.getCategories()) {
-            registerRepository.categoriesInsert(userId,category);
-        }
-    }
 }
