@@ -8,7 +8,7 @@ import tools.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 
 import com.example.qa_app.model.Entity.RegisterFrom;
-import com.example.qa_app.service.RegisterService;
+import com.example.qa_app.service.SetupService;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class SetupController {
 
-    private final RegisterService registerService;
+    private final SetupService setupRepository;
 
     @GetMapping("/setup")
     public String getRegister() {
@@ -29,9 +29,9 @@ public class SetupController {
     public String register(
             @RequestParam String allData,HttpSession session) throws Exception {
                 ObjectMapper mapper = new ObjectMapper();
-                RegisterFrom dto = mapper.readValue(allData, RegisterFrom.class);
+                RegisterFrom registerFrom = mapper.readValue(allData, RegisterFrom.class);
                 int userId = (int) session.getAttribute("userId");
-                registerService.register(userId, dto);
+                setupRepository.setup(userId, registerFrom);
                 return "/home";
             }
         }

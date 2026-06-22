@@ -11,7 +11,7 @@ public class SetupService {
 
     private final SetupRepository setupRepository;
 
-    public void register(int userId, RegisterFrom registerFrom) {
+    public void setup(int userId, RegisterFrom registerFrom) {
         // 収入
         setupRepository.incomeInsert(
                 userId,
