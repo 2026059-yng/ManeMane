@@ -23,7 +23,7 @@ public class MyPageRepository {
   // すべての固定費を取得する
   public List<Monthly> findFixedCosts(int user_id) {
     List<Monthly> costs = jdbcClient
-        .sql("SELECT * FROM monthly WHERE user_id = :user_id AND financial_category = FALSE")
+        .sql("SELECT * FROM monthly WHERE user_id = :user_id AND financial_category = false")
         .param("user_id", user_id)
         .query(Monthly.class)
         .list();

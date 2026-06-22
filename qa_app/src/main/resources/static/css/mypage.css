@@ -105,6 +105,7 @@
     padding-bottom: 4px;
     padding-right: 16px;
     outline: none;    /* クリック時の選択枠線を消す*/
+    width: 100%;
 }
 .mypage-saveButton {
     display: flex;         /* Flexboxを有効にする */
