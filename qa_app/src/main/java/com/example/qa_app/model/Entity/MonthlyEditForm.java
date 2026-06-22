@@ -1,5 +1,6 @@
 package com.example.qa_app.model.Entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryEditForm {
-    private Long id;
-    private String category_name;
+public class MonthlyEditForm {
+    private String fixedName;
+    private Integer monthlyAmount;
 }
