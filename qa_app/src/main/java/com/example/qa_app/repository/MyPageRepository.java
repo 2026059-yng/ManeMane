@@ -21,7 +21,7 @@ public class MyPageRepository {
     }
 
   // すべての固定費を取得する
-  public List<Monthly> findFixedCosts(int user_id) {
+  public List<Monthly> findFixedCosts(long user_id) {
     List<Monthly> costs = jdbcClient
         .sql("SELECT * FROM monthly WHERE user_id = :user_id AND financial_category = false")
         .param("user_id", user_id)
@@ -41,7 +41,7 @@ public class MyPageRepository {
   }
 
   // カテゴリー(3件)を取得する
-  public List<CategoryEditForm> findCategories(int user_id) {
+  public List<CategoryEditForm> findCategories(long user_id) {
     List<CategoryEditForm> categories = jdbcClient.sql("SELECT id, category_name FROM categories WHERE user_id = :user_id")
         .param("user_id", user_id)
         .query(CategoryEditForm.class)
@@ -51,7 +51,7 @@ public class MyPageRepository {
   }
 
   //monthlyテーブルの収入を更新する（UPDATE）
-  public void changeIncome(int user_id, int income) {
+  public void changeIncome(long user_id, int income) {
     jdbcClient.sql("UPDATE monthly SET monthly_amount = :income WHERE user_id = :user_id AND financial_category = true")
       .param("user_id", user_id)
       .param("income", income)
@@ -59,7 +59,7 @@ public class MyPageRepository {
   }
 
   //categoryテーブルのカテゴリー名を更新する
-  public void changeCategories(int user_id, CategoryEditForm c) {
+  public void changeCategories(long user_id, CategoryEditForm c) {
     jdbcClient.sql("UPDATE categories SET category_name = :category_name WHERE user_id = :user_id and id = :id")
       .param("user_id", user_id)
       .param("category_name", c.getCategory_name())
@@ -68,7 +68,7 @@ public class MyPageRepository {
   }
 
   //monthlyテーブルから特定のidのレコード(固定費)を削除する（DELETE）
-  public void deleteCost(int user_id, Long id) {
+  public void deleteCost(long user_id, Long id) {
     jdbcClient.sql("DELETE FROM monthly WHERE user_id = :user_id AND id = :id")
       .param("user_id", user_id)
       .param("id", id)
@@ -76,7 +76,7 @@ public class MyPageRepository {
   }
 
   //monthlyテーブルへの固定費（項目・金額）の追加する（INSERT）
-  public void addCost(int user_id, MonthlyEditForm form) {
+  public void addCost(long user_id, MonthlyEditForm form) {
     jdbcClient.sql("INSERT INTO monthly (user_id, financial_category, fixed_name, monthly_amount) VALUES (:user_id, :financial_category, :fixed_name, :monthly_amount)")
       .param("user_id", user_id)
       .param("financial_category", false)
