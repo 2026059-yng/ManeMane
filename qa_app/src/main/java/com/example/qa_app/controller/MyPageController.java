@@ -58,7 +58,7 @@ public class MyPageController {
     // 収入変更
     @PostMapping("/income")
     public String postIncome(HttpSession session, @RequestParam int income) {
-        Integer user_id = (Integer)session.getAttribute("user_id");
+        Long user_id = (Long)session.getAttribute("user_id");
 
         myPageService.changeIncome(user_id, income); 
         return "redirect:/mypage";
@@ -67,7 +67,7 @@ public class MyPageController {
     // カテゴリーの変更
     @PostMapping("/category")
     public String postCategory(HttpSession session, @ModelAttribute CategoryListForm form) {
-        Integer user_id = (Integer)session.getAttribute("user_id");
+        Long user_id = (Long)session.getAttribute("user_id");
 
         List<CategoryEditForm> list = form.getCategories();
         myPageService.changeCategories(user_id, list);
@@ -78,7 +78,7 @@ public class MyPageController {
     // 固定費の削除
     @PostMapping("/deleteCost/{id}")
     public String deleteCost(HttpSession session, @PathVariable Long id, Monthly monthly) {
-        Integer user_id = (Integer)session.getAttribute("user_id");
+        Long user_id = (Long)session.getAttribute("user_id");
 
         myPageService.deleteCost(user_id, id, monthly);
         return "redirect:/mypage";
@@ -87,7 +87,7 @@ public class MyPageController {
     // 固定費の追加
     @PostMapping("/cost")
     public String postCost(HttpSession session,@ModelAttribute MonthlyEditForm form) {
-        Integer user_id = (Integer)session.getAttribute("user_id");
+        Long user_id = (Long)session.getAttribute("user_id");
 
         myPageService.addCost(user_id, form);
         return "redirect:/mypage";

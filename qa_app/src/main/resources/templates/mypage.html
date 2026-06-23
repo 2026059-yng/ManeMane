@@ -75,7 +75,7 @@
                     <div class="mypage-costItem-rightElement">
                         <div class="mypage-costAmount">
                         <span>¥</span>
-                        <span th:text="${cost.monthly_amount}">50,000</span>
+                        <span th:text="${cost.monthlyAmount}">50,000</span>
                         </div>
                         <div><button type="submit" class="mypage-cost-deleteButton">&times;</button></div>
                     </div>
@@ -105,7 +105,7 @@
             <div class="mypage-user">ログインユーザー</div>
             <div th:text="${email}" class="mypage-session">メールアドレス</div>
         </div>
-        <form action="@{/logout}" method="post">
+        <form th:action="@{/logout}" method="post">
             <button type="submit" class="mypage-logoutButton">ログアウトする</button>
         </form>
     </div>

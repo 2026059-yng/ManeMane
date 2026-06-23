@@ -30,6 +30,6 @@ public class SetupController {
                 RegisterForm registerForm = mapper.readValue(allData, RegisterForm.class);
                 Long user_id = (Long) session.getAttribute("user_id");
                 setupService.setup(user_id, registerForm);
-                return "/home";
+                return "redirect:/home";
             }
         }

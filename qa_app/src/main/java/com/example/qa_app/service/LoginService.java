@@ -26,7 +26,7 @@ public class LoginService {
         return passwordEncoder.matches(password, hash.get());
     }
 
-    public int saveUserId(String email) { //userid
+    public Long saveUserId(String email) { //userid
         return loginRepository.findUserId(email);
     }
 
