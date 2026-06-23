@@ -2,8 +2,6 @@ package com.example.qa_app.service;
 
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-
-import com.example.qa_app.model.DTO.User;
 import com.example.qa_app.repository.LoginRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +16,9 @@ public class LoginService {
     }
 
     public boolean authenticate(String email, String password) {
+        if (email == null || password == null || email.isBlank() || password.isBlank()) {
+            return false;
+        }
         Optional<String> hash = loginRepository.findpasswordHash(email);
         if (hash.isEmpty()) {
             return false;
@@ -25,7 +26,7 @@ public class LoginService {
         return passwordEncoder.matches(password, hash.get());
     }
 
-    public int saveUserId(String email){
+    public Long saveUserId(String email) { //userid
         return loginRepository.findUserId(email);
     }
 

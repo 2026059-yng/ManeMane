@@ -1,35 +1,53 @@
 package com.example.qa_app.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.example.qa_app.model.Entity.RegisterFrom;
+
+import com.example.qa_app.model.DTO.User;
+import com.example.qa_app.model.Entity.RegisterForm;
 import com.example.qa_app.repository.RegisterRepository;
-import lombok.RequiredArgsConstructor;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class RegisterService {
 
-    private final RegisterRepository registerRepository;
+    @Autowired
+    private RegisterRepository registerRepository;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public void register(int userId,RegisterFrom registerFrom) {
-        // 収入
-        registerRepository.incomeInsert(
-                userId,
-                true,
-                registerFrom.getIncomeAmount());
-        // 固定費
-        if (registerFrom.getFixedNames() != null) {
-            for (int i = 0; i < registerFrom.getFixedNames().size(); i++) {
-                registerRepository.fixedInsert(
-                        userId,
-                        false,
-                        registerFrom.getFixedNames().get(i),
-                        registerFrom.getFixedAmounts().get(i));
-            }
-        }
-        // カテゴリ
-        for (String category : registerFrom.getCategories()) {
-            registerRepository.categoriesInsert(userId,category);
-        }
+    public RegisterService(RegisterRepository registerRepository) {
+        this.registerRepository = registerRepository;
     }
+
+    public long registerUser(RegisterForm registerForm) { // ユーザ新規登録
+        if (registerRepository.existsByEmail(registerForm.getEmail())) { // 例外処理
+            throw new IllegalArgumentException("メールアドレスは既に使用されています");
+        }
+        User user = new User();
+        user.setEmail(registerForm.getEmail());
+        String hashedPassword = passwordEncoder.encode(registerForm.getPassword());
+        user.setPassword(hashedPassword);
+        registerRepository.save(user);
+
+        long userId = registerRepository.findUserEmail(user.getEmail());
+        registerRepository.registerSaveIncome(
+            userId,
+            true,
+            "収入",
+            200000
+        );
+        List<String> defaultCategories = Arrays.asList("食費","趣味・娯楽","その他");
+        for (int i = 0; i < defaultCategories.size(); i++) {
+            registerRepository.registerSaveCategory(
+                userId,
+                defaultCategories.get(i)
+            );
+        }
+
+        return registerRepository.findUserEmail(user.getEmail()); 
+    }
+
 }

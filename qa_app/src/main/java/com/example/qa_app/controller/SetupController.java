@@ -7,17 +7,15 @@ import lombok.RequiredArgsConstructor;
 import tools.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 
-import com.example.qa_app.model.Entity.RegisterFrom;
-import com.example.qa_app.service.RegisterService;
+import com.example.qa_app.model.Entity.RegisterForm;
+import com.example.qa_app.service.SetupService;
 import org.springframework.web.bind.annotation.GetMapping;
-
 
 @Controller
 @RequiredArgsConstructor
-
 public class SetupController {
 
-    private final RegisterService registerService;
+    private final SetupService setupService;
 
     @GetMapping("/setup")
     public String getRegister() {
@@ -29,9 +27,9 @@ public class SetupController {
     public String register(
             @RequestParam String allData,HttpSession session) throws Exception {
                 ObjectMapper mapper = new ObjectMapper();
-                RegisterFrom dto = mapper.readValue(allData, RegisterFrom.class);
-                int userId = (int) session.getAttribute("user_id");
-                registerService.register(userId, dto);
-                return "/home";
+                RegisterForm registerForm = mapper.readValue(allData, RegisterForm.class);
+                Long user_id = (Long) session.getAttribute("user_id");
+                setupService.setup(user_id, registerForm);
+                return "redirect:/home";
             }
         }

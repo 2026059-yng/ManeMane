@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/mypage.css">
+    <title>マイページ</title>
+</head>
+<body>
+    <header th:replace="~{fragment :: header}"></header>
+
+    <!-- 今月の使用可能金額予算 -->
+    <div class="mypage-monthlyBudget">
+        <span class="mypage-monthlyBudget-title">今月の使用可能金額予算</span>
+        <div class="mypage-monthlyBudgetAmount">
+            <span>¥</span>
+            <span th:text="${monthlyBudget}">105,000</span>
+        </div>
+        <span class="mypage-monthlyBudget-title">収入 - 固定費の合計</span>
+    </div>
+
+    <!-- 手取り収入の変更 -->
+    <div class="mypage-itemCard">
+        <span class="mypage-item-circle">●</span>
+        <span>手取り収入の変更</span><br>
+        <form th:action="@{/income}" method="post">
+            <div class="mypage-income-fakeform">
+                <label for="income">¥</label>
+                <input type="number" id="income" name="income" th:value="${income}" class="mypage-income-form" min="0" required>
+            </div>
+            <button type="submit" class="mypage-saveButton">月給給料の保存</button>
+        </form>
+    </div>
+
+    <!-- カテゴリー名の変更 -->
+    <div class="mypage-itemCard">
+        <span class="mypage-item-circle">●</span>
+        <span>カテゴリー名の変更</span><br>
+        <form th:action="@{/category}" th:object="${categories}" method="post">
+            <div>
+                <label for="category_name1" class="mypage-category-name1">●</label>
+                <input type="hidden" th:field="*{categories[0].id}"/>
+                <input type="text" id="category_name1" th:field="*{categories[0].category_name}" class="mypage-categoryForm" required/>
+            </div>
+            <div>
+                <label for="category_name2" class="mypage-category-name2">●</label>
+                <input type="hidden" th:field="*{categories[1].id}"/>
+                <input type="text" id="category_name2" th:field="*{categories[1].category_name}" class="mypage-categoryForm" required/>
+            </div>
+            <div>
+                <label for="category_name3" class="mypage-category-name3">●</label>
+                <input type="hidden" th:field="*{categories[2].id}"/>
+                <input type="text" id="category_name3" th:field="*{categories[2].category_name}" class="mypage-categoryForm" required/>
+            </div>
+            <button type="submit" class="mypage-saveButton">カテゴリーの保存</button>
+        </form>
+    </div>
+
+    <!-- 固定費の表示・削除・追加 -->
+    <div class="mypage-itemCard">
+        <div class="mypage-cost-change">
+            <div>
+                <span class="mypage-item-circle">●</span>
+                <span>固定費の変更</span>
+            </div>
+            <div class="mypage-totalCosts">
+                <span>合計 : ¥</span>
+                <span th:text="${fixedCosts}">75,000</span>
+            </div>
+        </div>
+        <div th:each="cost : ${costs}" class="mypage-costItem">
+            <form th:action="@{/deleteCost/{id}(id=${cost.id})}" method="post" class="mypage-deleteForm">
+                <div class="mypage-oneCost">
+                    <div th:text="${cost.fixed_name}" class="mypage-costName">家賃</div>
+                    <div class="mypage-costItem-rightElement">
+                        <div class="mypage-costAmount">
+                        <span>¥</span>
+                        <span th:text="${cost.monthlyAmount}">50,000</span>
+                        </div>
+                        <div><button type="submit" class="mypage-cost-deleteButton">&times;</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    <!-- 固定費の追加 -->
+        <div class="mypage-addCost">
+            <div class="mypage-addCost-title">＋固定費を追加</div>
+            <div>
+                <form th:action="@{/cost}" method="post">
+                    <input type="text" name="fixedName" placeholder="項目名" class="mypage-addCost-nameForm" required>
+                    <div class="mypage-addCost-underElement">
+                        <input type="number" name="monthlyAmount" placeholder="¥金額" class="mypage-addCost-amountForm" min="0" required> 
+                        <button type="submit" class="mypage-cost-addButton">追加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ログアウト -->
+    <div class="mypage-itemCard">
+        <span class="mypage-session">セッション情報</span>
+        <div class="mypage-email">
+            <div class="mypage-user">ログインユーザー</div>
+            <div th:text="${email}" class="mypage-session">メールアドレス</div>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="mypage-logoutButton">ログアウトする</button>
+        </form>
+    </div>
+
+</body>
+</html>

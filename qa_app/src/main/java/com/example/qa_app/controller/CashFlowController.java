@@ -3,7 +3,6 @@ package com.example.qa_app.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,7 +23,7 @@ public class CashFlowController {
     // 検証用
     // session.setAttribute("user_id", 1);
     // user_idをセッションから取得
-    int user_id = (int) session.getAttribute("user_id");
+    Long user_id = (Long) session.getAttribute("user_id");
     model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(user_id));
     model.addAttribute("allThisMonth", cashFlowService.showAllThisMonth(user_id));
     model.addAttribute("totalExpensesLastMonth", cashFlowService.calcExpensesLastMonth(user_id));
