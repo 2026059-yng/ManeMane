@@ -30,7 +30,7 @@ public class SetupController {
             @RequestParam String allData,HttpSession session) throws Exception {
                 ObjectMapper mapper = new ObjectMapper();
                 RegisterFrom dto = mapper.readValue(allData, RegisterFrom.class);
-                int userId = (int) session.getAttribute("userId");
+                int userId = (int) session.getAttribute("user_id");
                 registerService.register(userId, dto);
                 return "/home";
             }
