@@ -32,13 +32,13 @@ document.getElementById("addFixedCost").addEventListener("click", function () {
     const div = document.createElement("div");
     div.className = "fixedCost";
     div.innerHTML = `
-        <input type="text" class="fixedName" placeholder="固定費名">
-        <input type="text" class="fixedAmount" placeholder="金額">
+        <input type="text" class="fixedName" name="fixedName" placeholder="固定費名">
+        <input type="text" class="fixedAmount" name="fixedAmount" placeholder="金額">
         <button type="button" class="deleteBtn">削除</button>
     `;
 
     div.querySelector(".fixedAmount").addEventListener("input", function () {
-        this.value = this.value.replace(/[^0-9]/g, "");
+        this.value = this.value.replace(/[^0-9]/g, "");// 半角に強制変換
         updateAvailableAmount();
     });
 
@@ -112,8 +112,8 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
             document.getElementById("cat2").value.trim(),
             document.getElementById("cat3").value.trim()
         ],
-        fixedNames: names,
-        fixedAmounts: amounts
+        fixedName: names,
+        fixedAmount: amounts
     };
 
     document.getElementById("hiddenAllData").value = JSON.stringify(data);

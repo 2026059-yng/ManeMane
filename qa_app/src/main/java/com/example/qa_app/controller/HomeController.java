@@ -31,7 +31,7 @@ public class HomeController {
   @GetMapping("/home")
   public String getHome(HttpSession session, Model model) {
     // Httpsessionからuser_idを取得
-    long user_id = (long)session.getAttribute("user_id");
+    Long user_id = (Long)session.getAttribute("user_id");
 
     // 使用可能金額・収入・固定費合計・実支出の金額を格納したリストを受け取る
     List<Integer> amounts = homeService.returnAmounts(user_id);
@@ -61,7 +61,7 @@ public class HomeController {
 
   @PostMapping("/home")
   public String EntryTransaction(@ModelAttribute EntryForm form, HttpSession session) {
-    long user_id = (Integer)session.getAttribute("user_id");
+    Long user_id = (Long)session.getAttribute("user_id");
 
     // 支出・臨時収入に関する入力データをDBに追加するメソッドの呼び出し
     homeService.saveTransaction(form, user_id);

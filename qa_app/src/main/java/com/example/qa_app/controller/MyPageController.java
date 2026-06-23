@@ -29,7 +29,7 @@ public class MyPageController {
 
     @GetMapping("/mypage")
     public String getData(HttpSession session, Model model) {
-        long user_id = (Integer)session.getAttribute("user_id");
+        Long user_id = (Long)session.getAttribute("user_id");
         String email = (String)session.getAttribute("email");
 
         //今月の使用可能金額表示

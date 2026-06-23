@@ -28,7 +28,7 @@ public class RegisterController {
     @PostMapping("/register")
     public String registerUser(@ModelAttribute RegisterForm registerForm, Model model, HttpSession session) {
         try {
-            long user_id = registerService.registerUser(registerForm);
+            Long user_id = registerService.registerUser(registerForm);
             session.setAttribute("user_id", user_id); // session保持
             return "redirect:/setup"; // 保持してパラメータ設定
         } catch (IllegalArgumentException e) {

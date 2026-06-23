@@ -14,7 +14,7 @@ public class RegisterForm {
     // ユーザーが入力した収入、固定費、カテゴリ、金額を取得
     private Integer incomeAmount;
     private List<String> categories;
-    private List<String> fixedNames;
-    private List<Integer> fixedAmounts;
+    private List<String> fixedName;
+    private List<Integer> fixedAmount;
 
 }

@@ -28,8 +28,8 @@ public class SetupController {
             @RequestParam String allData,HttpSession session) throws Exception {
                 ObjectMapper mapper = new ObjectMapper();
                 RegisterForm registerForm = mapper.readValue(allData, RegisterForm.class);
-                long userId = (long) session.getAttribute("userId");
-                setupService.setup(userId, registerForm);
+                Long user_id = (Long) session.getAttribute("user_id");
+                setupService.setup(user_id, registerForm);
                 return "/home";
             }
         }
