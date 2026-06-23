@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>マネマネ</title>
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <div th:replace="~{fragment :: header}"></div>
+  
+  <div class="home-container">
+    <!-- 使用可能金額・収入・固定費合計・実支出額を表示 -->
+    <div class="home-showamount-container">
+      <!-- 使用可能金額を表示 -->
+      <div class="home-topAmount-container">
+        <span id="home-show-title">使用可能金額</span><br>
+        <span class="home-show-amount" th:text="'¥' + ${#numbers.formatInteger(availableBalance,3,'COMMA')}">￥93,000</span>
+      </div>
+      <div class="home-bottomAmount-container">
+        <!-- 収入を表示 -->
+        <div class="home-subAmount-container">
+          <span id="home-show-subtitle">月間給料(収入)</span><br>
+          <span class="home-show-subamount" th:text="'¥' + ${#numbers.formatInteger(income,3,'COMMA')}">￥200,000</span>
+        </div>
+        <!-- 固定費合計を表示 -->
+        <div class="home-subAmount-container">
+          <span id="home-show-subtitle">固定費</span><br>
+          <span class="home-show-subamount" th:text="'¥' + ${#numbers.formatInteger(fixedCosts,3,'COMMA')}">￥95,000</span>
+        </div>
+        <!-- 実支出額を表示 -->
+        <div class="home-subAmount-container">
+          <span id="home-show-subtitle">実支出額(今月)</span><br>
+          <span class="home-show-subamount-last" th:text="'¥' + ${#numbers.formatInteger(actualExpenses,3,'COMMA')}">￥11,700</span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 収支を入力するフォーム -->
+    <div class="home-entry-container">
+      <form action="/home" method="post">
+  
+        <!-- true(使う) / false(増やす)をvalueに格納するための input type="hidden" -->
+        <input type="hidden" name="in_out" id="in_out" value=""/>
+        <div class="home-transaction-top">
+          <div class="home-title-container"><div id="home-title-circle">●</div><span id="home-entry-title">収支を入力</span></div>
+          <div><input type="button" value="－使う" onclick='selectInOut("true")' class="home-out-button" id="home-out-button">
+            <input type="button" value="＋増やす" onclick='selectInOut("false")' class="home-in-button" id="home-in-button"></div>
+        </div>
+  
+        <!-- 金額を入力するコンテナ -->
+        <div class="home-amount-container">
+          <nav id="home-entry-subtitle">金額</nav>
+          <div class="home-amount-fakeform">
+            <label for="">¥</label>  
+            <input type="number" name="daily_amount" id="daily_amount" class="home-dailyAmount-input" min="0" placeholder="0" required>
+          </div>
+          <div class="home-amountButton-container">
+            <button type="button" id="home-button1" onclick='calcAmount("button1")' class="home-amount-button">＋100</button>
+            <button type="button" id="home-button2" onclick='calcAmount("button2")' class="home-amount-button">＋500</button>
+            <button type="button" id="home-button3" onclick='calcAmount("button3")' class="home-amount-button">＋1,000</button>
+            <button type="button" id="home-button4" onclick='calcAmount("button4")' class="home-amount-button">＋10,000</button>          </div>
+          <button type="button" id="home-button5" onclick='calcAmount("button5")' class="home-clear-button"><span>金額をクリア</span></button>
+        </div>
+    
+        <!-- カテゴリーを入力するコンテナ -->
+        <div class="home-category-container">
+          <nav id="home-entry-subtitle">カテゴリー</nav>
+          <div class="home-cateButton-container">
+            <button type="button" class="home-category-button" onclick='selectCategory("1")' id="home-category1" th:value="${category_name1}"><div class="home-cate1">●</div><span th:text="${category_name1}">食費</span></button>
+            <button type="button" class="home-category-button" onclick='selectCategory("2")' id="home-category2" th:value="${category_name2}"><div class="home-cate2">●</div><span th:text="${category_name2}">趣味・娯楽</span></button>
+            <button type="button" class="home-category-button" onclick='selectCategory("3")' id="home-category3" th:value="${category_name3}"><div class="home-cate3">●</div><span th:text="${category_name3}">その他</span></button>
+            <input type="hidden" name="category_name" id="home-category_name" value=""/>
+          </div>
+        </div>
+    
+        <!-- 日付を入力するコンテナ -->
+        <div class="home-date-container">
+          <nav id="home-entry-subtitle">日付</nav>
+          <input type="date" name="date" id="dateValue" value="dateValue" class="home-date-input" min="" max="">
+        </div>
+  
+        <button type="submit" class="home-submit-button" id="home-submit-button">記録する</button>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="/js/HomeDate.js"></script>
+</html>

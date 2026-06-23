@@ -1,28 +1,61 @@
 package com.example.qa_app.repository;
 
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import lombok.RequiredArgsConstructor;
+
+import com.example.qa_app.model.DTO.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.simple.JdbcClient;
 
 @Repository
-@RequiredArgsConstructor
 public class RegisterRepository {
 
-    private final JdbcTemplate jdbc;
+    @Autowired
+    private JdbcClient jdbcClient;
 
-    public void incomeInsert(int userId,boolean financialCategory,Integer monthlyAmount) {
-        String sql = "INSERT INTO daily(user_id, financial_category, monthly_amount)VALUES (?, ?, ?, ?)";
-        jdbc.update(sql,userId,financialCategory,monthlyAmount);
+    public RegisterRepository(JdbcClient jdbcClient) {
+        this.jdbcClient = jdbcClient;
     }
 
-    public void fixedInsert(int userId,boolean financialCategory,String fixedName,Integer monthlyAmount) {
-        String sql = "INSERT INTO daily(user_id, financial_category, fixed_name, monthly_amount)VALUES (?, ?, ?, ?)";
-        jdbc.update(sql,userId,financialCategory,fixedName,monthlyAmount);
+    public boolean existsByEmail(String email) { // メールアドレスが既にあるか確認
+        String sql = "SELECT COUNT(*) FROM users WHERE email = :email";
+        Integer count = jdbcClient.sql(sql)
+                .param("email", email)
+                .query(Integer.class)
+                .single();
+        return count != null && count > 0;
     }
 
-    public void categoriesInsert(int userId,String categoryName) {
-      String sql = "INSERT INTO categories(user_id,category_name)VALUES (?, ?)";
-      jdbc.update(sql,userId,categoryName);
+    public void save(User user) {
+        String sql = "INSERT INTO users(email, password) VALUES (:email, :password)";
+        jdbcClient.sql(sql)
+                .param("email", user.getEmail())
+                .param("password", user.getPassword())
+                .update();
     }
 
+    public void registerSaveIncome(long userId, boolean isFinCategory, String fixedName, int monthlyAmount) { // 収入の初期設定
+        String sql = "INSERT INTO monthly (user_id, financial_category, fixed_name, monthly_amount) VALUES (:userId, :isFinCategory, :fixedName, :monthlyAmount)";
+        jdbcClient.sql(sql)
+                .param("userId", userId)
+                .param("isFinCategory", isFinCategory)
+                .param("fixedName", fixedName)
+                .param("monthlyAmount", monthlyAmount)
+                .update();
+    }
+
+    public void registerSaveCategory(long userId, String categoryName) { // カテゴリの初期値を設定
+        String sql = "INSERT INTO categories (user_id, category_name) VALUES (:userId, :categoryName)";
+        jdbcClient.sql(sql)
+                .param("userId", userId)
+                .param("categoryName", categoryName)
+                .update();
+    }
+
+    public long findUserEmail(String email) { // userid取得処理
+        return jdbcClient.sql("SELECT id FROM users WHERE email = :email")
+                .param("email", email)
+                .query(Integer.class)
+                .single();
+
+    }
 }

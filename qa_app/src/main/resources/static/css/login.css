@@ -1,3 +1,161 @@
-body {
-    background-color: blue;
+
+@media screen and (min-width:320px) {
+    /*　画面サイズが320pxからはここを読み込む　*/
+  body{
+    margin: 20px;
+  }
 }
+@media screen and (min-width:380px) and (max-width:450px) {
+    /*　画面サイズが380pxから450pxまではここを読み込む　*/
+  body{
+    margin: 30px;
+    max-width: 410px;
+  }
+}
+@media screen and (min-width:1030px) {
+    /*　画面サイズが1030pxからはここを読み込む　*/
+  body{
+    margin: auto;
+    margin-top: 20px;
+    max-width: 410px;
+  }
+}
+
+body {
+    /*全体*/
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: #f4f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    /*ログイン*/
+    background-color: #ffffff;
+    border: 1px solid #333333;
+    width: 380px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.register-container {
+    /*新規登録*/
+    background-color: #ffffff;
+    border: 1px solid #333333;
+    width: 380px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.login-logo {
+    /*ログインタイトル*/
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.register-logo {
+    /*新規登録タイトル*/
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    /*ログイン・新規登録*/
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.form-box {
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.login-form-group {
+    /*ログインform*/
+    margin-bottom: 15px;
+}
+
+.register-form-group {
+    /*新規form*/
+    margin-bottom: 15px;
+}
+
+label {
+    /*ログイン・新規*/
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+input {
+    /*ログイン・新規*/
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.login-btn {
+    /*ログインボタン*/
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #64ceff;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.register-btn {
+    /*新規ボタン*/
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #72d595;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #64ceff;
+}
+
+.register-btn:hover {
+    background-color: #72d595;
+}
+
+.login-error-message {
+    /*ログインエラーメッセージ*/
+    color: red;
+}
+
+.register-error-message {
+    /* エラーメッセージ */
+    color: red;
+}
+
+.login-link a {
+    /*新規登録リンク*/
+    text-decoration: none;
+    color: #64ceff;
+}
+
+.register-link a {
+    /*ログインリンク*/
+    text-decoration: none;
+    color: #64ceff;
+}
+
+.hidden-fields {
+    /* 非表示*/
+    display: none;
+}
+

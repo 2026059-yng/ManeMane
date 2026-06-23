@@ -1,0 +1,299 @@
+@media screen and (min-width:320px) {
+    /*　画面サイズが320pxからはここを読み込む　*/
+  body{
+    margin: 20px;
+  }
+}
+@media screen and (min-width:380px) and (max-width:451px) {
+    /*　画面サイズが380pxから450pxまではここを読み込む　*/
+  body{
+    margin: 30px;
+    max-width: 410px;
+  }
+}
+@media screen and (min-width:1030px) {
+    /*　画面サイズが1030pxからはここを読み込む　*/
+  body{
+    margin-inline: auto;
+    margin-top: 30px;
+    max-width: 410px;
+  }
+}
+
+/* 共通ヘッダー　フラグメント */
+.fragment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid lightblue;
+}
+.fragment-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: dimgray;
+    margin-left: 12px;
+    margin-bottom: 12px;
+}
+.fragment-link {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
+.fragment-link a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 今月の使用可能金額 */
+.mypage-monthlyBudget {
+    background-color: dodgerblue;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+.mypage-monthlyBudget-title {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 8px;
+}
+.mypage-monthlyBudgetAmount {
+    border-bottom: 1px solid white;
+    padding-bottom: 8px;
+    padding-left: 8px;
+}
+.mypage-monthlyBudgetAmount span {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+
+/* 各変更項目 */
+.mypage-itemCard {
+    background-color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 12px 0;
+    border: 3px solid lightgray;
+}
+.mypage-item-circle {
+    color: dodgerblue;
+    font-size: 8px;
+    display: inline-block; /* インラインブロック要素に変更 */
+    text-align: center; /* テキストを中央寄せ */
+    vertical-align: middle; /* 垂直方向も中央寄せ */
+}
+.mypage-income-fakeform {
+    display: flex;         /* Flexboxを有効にする */
+    align-items: center;   /* 中の要素を「上下中央」に揃える */
+    background-color: ghostwhite;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+}
+.mypage-income-fakeform label {
+    align-items: center;   /* 中の要素を「上下中央」に揃える */
+    margin: 0 8px;
+}
+.mypage-income-form {
+    background-color: ghostwhite;
+    border: none;       /* 枠線を消す */
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 16px;
+    outline: none;    /* クリック時の選択枠線を消す*/
+    width: 100%;
+}
+.mypage-saveButton {
+    display: flex;         /* Flexboxを有効にする */
+    width: 100%;
+    justify-content: center;/* 左右の中央寄せ */
+    align-items: center;     /* 上下の中央寄せ */
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    border: none;       /* 枠線を消す */
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+.mypage-category-name1 {
+    color: red;
+    font-size: 12px;
+    display: inline-block; /* インラインブロック要素に変更 */
+    text-align: center; /* テキストを中央寄せ */
+    vertical-align: middle; /* 垂直方向も中央寄せ */
+    margin-left: 8px;
+}
+.mypage-category-name2 {
+    color: yellow;
+    font-size: 12px;
+    display: inline-block; /* インラインブロック要素に変更 */
+    text-align: center; /* テキストを中央寄せ */
+    vertical-align: middle; /* 垂直方向も中央寄せ */
+    margin-left: 8px;
+}
+.mypage-category-name3 {
+    color: black;
+    font-size: 12px;
+    display: inline-block; /* インラインブロック要素に変更 */
+    text-align: center; /* テキストを中央寄せ */
+    vertical-align: middle; /* 垂直方向も中央寄せ */
+    margin-left: 8px;
+}
+.mypage-categoryForm {
+    background-color: ghostwhite;
+    width: 70%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-left: 8px;
+    border: 1px solid #ccc;
+    outline: none;    /* クリック時の選択枠線を消す*/
+}
+.mypage-cost-change {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mypage-totalCosts {
+    background-color: ghostwhite;
+    border-radius: 8px;
+    padding: 0 8px;
+    border: 3px solid #ccc;
+}
+.mypage-totalCosts span {
+    font-size: 12px;
+}
+.mypage-costItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ghostwhite;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+}
+.mypage-deleteForm {
+    width: 100%;
+}
+.mypage-oneCost {
+    display: flex;
+    justify-content: space-between; /* これが端と端に寄せる*/
+    align-items: center;            /* 必要に応じて上下中央揃えに */
+}
+.mypage-costName {
+    color: gray;
+    font-size: 12px;
+}
+.mypage-costAmount {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+.mypage-costItem-rightElement {
+    display: flex;         /* Flexboxを有効にする */
+    align-items: center;   /* 中の要素を「上下中央」に揃える */
+    gap: 8px;
+}
+.mypage-cost-deleteButton {
+    display: flex;
+    background: transparent; /* 背景を透明にする */
+    border: none;          
+    outline: none;
+    padding: 0;
+    margin: 0;
+    color: red;
+    font-size: 20px;
+}
+.mypage-addCost {
+    background-color: ghostwhite;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+}
+.mypage-addCost-title {
+    font-size: 12px;
+    margin: 4px;
+}
+.mypage-addCost-nameForm {
+    color: gray;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 90%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    margin-top: 4px;
+    margin-left: 4px;
+    margin-right: 8px;
+    outline: none;    /* クリック時の選択枠線を消す*/
+}
+.mypage-addCost-underElement {
+    display: flex;         /* Flexboxを有効にする */
+    justify-content: space-between;
+    align-items: center;
+}
+.mypage-addCost-amountForm {
+    color: gray;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 50%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+    margin-right: 8px;
+    outline: none;    /* クリック時の選択枠線を消す*/
+}
+.mypage-cost-addButton {
+    display: flex;         /* Flexboxを有効にする */
+    justify-content: center;/* 左右の中央寄せ */
+    align-items: center;     /* 上下の中央寄せ */
+    background-color: lightskyblue;
+    color: white;
+    font-weight: 700;
+    border: none;       /* 枠線を消す */
+    padding: 8px 16px;
+    margin-right: 8px;
+    border-radius: 8px;
+}
+.mypage-email {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+}
+.mypage-user {
+    color: #ccc;
+    font-size: 12px;
+}
+.mypage-session {
+    color: black;
+    font-weight: 500;
+    font-size: 12px;
+}
+.mypage-logoutButton {
+    display: flex;         /* Flexboxを有効にする */
+    width: 100%;
+    justify-content: center;/* 左右の中央寄せ */
+    align-items: center;     /* 上下の中央寄せ */
+    background-color: lightpink;
+    color: orangered;
+    font-weight: 700;
+    border: none;       /* 枠線を消す */
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
