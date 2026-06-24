@@ -25,7 +25,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 5px solid lightblue;
+    border-bottom: 5px solid skyblue;
 }
 .fragment-title {
     font-size: 20px;
@@ -188,7 +188,7 @@
     align-items: center;            /* 必要に応じて上下中央揃えに */
 }
 .mypage-costName {
-    color: gray;
+    color: black;
     font-size: 12px;
 }
 .mypage-costAmount {
@@ -260,7 +260,7 @@
     display: flex;         /* Flexboxを有効にする */
     justify-content: center;/* 左右の中央寄せ */
     align-items: center;     /* 上下の中央寄せ */
-    background-color: lightskyblue;
+    background-color: blue;
     color: white;
     font-weight: 700;
     border: none;       /* 枠線を消す */
