@@ -20,10 +20,10 @@ public class LoginRepository {
                 .optional();
     }
 
-    public int findUserId(String email) { //userid取得処理
+    public Long findUserId(String email) { //userid取得処理
         return jdbcClient.sql("SELECT id FROM users WHERE email = :email")
                 .param("email", email)
-                .query(Integer.class)
+                .query(Long.class)
                 .single();
     }
 

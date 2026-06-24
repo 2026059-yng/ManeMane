@@ -25,6 +25,12 @@ public class CashFlowController {
     // session.setAttribute("user_id", 1);
     // user_idをセッションから取得
     Long user_id = (Long) session.getAttribute("user_id");
+
+    // ログインチェック
+    if(user_id == null) {
+      return "redirect:/login";
+    }
+
     model.addAttribute("totalExpensesThisMonth", cashFlowService.calcExpensesThisMonth(user_id));
     model.addAttribute("allThisMonth", cashFlowService.showAllThisMonth(user_id));
     model.addAttribute("totalExpensesLastMonth", cashFlowService.calcExpensesLastMonth(user_id));
