@@ -18,7 +18,13 @@ public class SetupController {
     private final SetupService setupService;
 
     @GetMapping("/setup")
-    public String getRegister() {
+    public String getRegister(HttpSession session) {
+        Long user_id = (Long) session.getAttribute("user_id");
+        
+        // ログインチェック
+        if(user_id == null) {
+            return "redirect:/login";
+        }
         return "/setup";
     }
     
