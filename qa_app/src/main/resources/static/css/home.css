@@ -31,7 +31,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 5px solid lightblue;
+  border-bottom: 5px solid skyblue;
 }
 
 .fragment-title {
@@ -229,7 +229,7 @@ th.cashflow-deletecol {
 .home-show-subamount-last{
   font-size: 13px;
   font-weight: bold;
-  color: rgb(250, 127, 127);
+  color: rgb(250, 53, 53);
 }
 .home-entry-container{
   padding: 15px 20px;

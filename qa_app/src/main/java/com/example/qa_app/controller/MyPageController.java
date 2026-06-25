@@ -32,6 +32,11 @@ public class MyPageController {
         Long user_id = (Long)session.getAttribute("user_id");
         String email = (String)session.getAttribute("email");
 
+        // ログインチェック
+        if(user_id == null) {
+            return "redirect:/login";
+        }
+
         //今月の使用可能金額表示
         model.addAttribute("monthlyBudget", myPageService.calcMonthlyBudget(user_id));
 

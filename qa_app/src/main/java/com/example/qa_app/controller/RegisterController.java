@@ -30,6 +30,7 @@ public class RegisterController {
         try {
             Long user_id = registerService.registerUser(registerForm);
             session.setAttribute("user_id", user_id); // session保持
+            session.setAttribute("email", registerForm.getEmail());
             return "redirect:/setup"; // 保持してパラメータ設定
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage()); // error時
