@@ -180,131 +180,167 @@ th.cashflow-deletecol {
 
 
 /* ホーム画面 ここから */
-.home-container{
+.home-container {
   margin: 10px 0px;
 }
-.home-showamount-container{
+
+.home-showamount-container {
   padding: 15px 25px;
   margin-bottom: 5px;
   border-radius: 20px;
   background-color: rgb(54, 56, 80);
 }
-.home-topAmount-container{
+
+.home-topAmount-container {
   padding-bottom: 6px;
   padding-left: 4px;
   border-bottom: 1px solid rgb(196, 196, 196);
 }
-#home-show-title{
+
+#home-show-title {
   font-size: 12px;
   font-weight: bold;
   color: rgb(233, 233, 233);
 }
-.home-show-amount{
+
+/* .home-show-amount {
   font-size: 26px;
   font-weight: bold;
   color: rgb(250, 250, 250);
+} */
+
+.home-plus {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
 }
-.home-bottomAmount-container{
+
+.home-minus {
+  font-size: 26px;
+  font-weight: bold;
+  color: red;
+}
+
+.home-bottomAmount-container {
   display: flex;
   gap: 20px;
 }
-.home-subAmount-container{
+
+.home-subAmount-container {
   width: 100%;
   text-align: center;
 }
-#home-show-subtitle{
+
+#home-show-subtitle {
   font-size: 10px;
   color: rgb(233, 233, 233);
 }
-.home-show-subamount{
+
+.home-show-subamount {
   font-size: 13px;
   font-weight: bold;
   color: rgb(250, 250, 250);
 }
-.home-show-subamount-last{
+
+.home-show-subamount-last {
   font-size: 13px;
   font-weight: bold;
   color: rgb(250, 127, 127);
 }
-.home-entry-container{
+
+.home-entry-container {
   padding: 15px 20px;
   margin-top: 14px;
   margin-bottom: 5px;
   border-radius: 20px;
   border: 2px solid rgb(190, 190, 190);
 }
-.home-transaction-top{
+
+.home-transaction-top {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.home-title-container{
+
+.home-title-container {
   display: flex;
   gap: 4px;
   align-items: center;
 }
-#home-title-circle{
+
+#home-title-circle {
   font-size: 14px;
-  color: rgb(108, 208, 255); 
+  color: rgb(108, 208, 255);
 }
-#home-entry-title{
+
+#home-entry-title {
   font-weight: bold;
   font-size: 14px;
 }
-.home-out-button{
+
+.home-out-button {
   border: none;
   border-radius: 4px;
   font-weight: bold;
   padding: 4px 12px;
 }
-.home-in-button{
+
+.home-in-button {
   border: none;
   border-radius: 4px;
   font-weight: bold;
   padding: 4px 12px;
 }
-.home-out-button.active{
+
+.home-out-button.active {
   background-color: rgb(255, 107, 107);
   color: white;
 }
-.home-in-button.active{
+
+.home-in-button.active {
   background-color: rgb(14, 214, 114);
   color: white;
 }
-#home-entry-subtitle{
+
+#home-entry-subtitle {
   font-size: 14px;
   font-weight: bold;
 }
+
 .home-amount-fakeform {
-    display: flex;
-    align-items: center;
-    background-color: ghostwhite;
-    padding: 8px;
-    padding-right: 0px;
-    border-radius: 8px;
-    margin: 6px 0px;
-    border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  background-color: ghostwhite;
+  padding: 8px;
+  padding-right: 0px;
+  border-radius: 8px;
+  margin: 6px 0px;
+  border: 1px solid #ccc;
 }
+
 .home-amount-fakeform label {
-    align-items: center;
-    margin: 0 8px;
+  align-items: center;
+  margin: 0 8px;
 }
+
 .home-dailyAmount-input {
-    background-color: ghostwhite;
-    border: none;
-    padding-top: 4px;
-    padding-bottom: 0px;
-    padding-right: 16px;
-    outline: none;
-    width: 100%;
-    font-weight: bold;
-    font-size: 18px;
+  background-color: ghostwhite;
+  border: none;
+  padding-top: 4px;
+  padding-bottom: 0px;
+  padding-right: 16px;
+  outline: none;
+  width: 100%;
+  font-weight: bold;
+  font-size: 18px;
 }
-.home-amountButton-container{
+
+.home-amountButton-container {
   display: flex;
   gap: 8px;
 }
-.home-amount-button{
+
+.home-amount-button {
   align-items: center;
   background-color: ghostwhite;
   padding: 6px 2px;
@@ -313,7 +349,8 @@ th.cashflow-deletecol {
   border: 1px solid #ccc;
   font-weight: bold;
 }
-.home-clear-button{
+
+.home-clear-button {
   align-items: center;
   background-color: rgb(173, 173, 173);
   padding: 8px 12px;
@@ -323,19 +360,23 @@ th.cashflow-deletecol {
   width: 100%;
   justify-content: center;
 }
-.home-clear-button span{
+
+.home-clear-button span {
   font-weight: bold;
   color: white;
 }
-.home-category-container{
+
+.home-category-container {
   margin-top: 12px;
 }
-.home-cateButton-container{
+
+.home-cateButton-container {
   display: flex;
   gap: 10px;
   margin-top: 4px;
 }
-.home-category-button{
+
+.home-category-button {
   display: flex;
   align-items: center;
   background-color: ghostwhite;
@@ -344,28 +385,34 @@ th.cashflow-deletecol {
   border: 1px solid #ccc;
   font-size: 12px;
 }
-.home-category-button.active{
+
+.home-category-button.active {
   border: 3px solid rgb(119, 119, 119);
 }
-.home-cate1{
+
+.home-cate1 {
   color: red;
   font-size: 20px;
   padding-right: 2px;
 }
-.home-cate2{
+
+.home-cate2 {
   color: rgb(255, 230, 0);
   font-size: 20px;
   padding-right: 2px;
 }
-.home-cate3{
+
+.home-cate3 {
   color: gray;
   font-size: 20px;
   padding-right: 2px;
 }
-.home-date-container{
+
+.home-date-container {
   margin-top: 12px;
 }
-.home-date-input{
+
+.home-date-input {
   display: flex;
   align-items: center;
   background-color: ghostwhite;
@@ -373,9 +420,10 @@ th.cashflow-deletecol {
   padding: 4px 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 12px; 
+  font-size: 12px;
 }
-.home-submit-button{
+
+.home-submit-button {
   align-items: center;
   width: 100%;
   padding: 8px 12px;
@@ -388,10 +436,13 @@ th.cashflow-deletecol {
   color: white;
   font-size: 14px;
 }
-.home-submit-button.out{
+
+.home-submit-button.out {
   background-color: rgb(255, 107, 107);
 }
-.home-submit-button.in{
+
+.home-submit-button.in {
   background-color: rgb(14, 214, 114);
 }
+
 /* ホーム画面ここまで */

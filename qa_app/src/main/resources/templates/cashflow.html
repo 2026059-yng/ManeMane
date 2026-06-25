@@ -36,7 +36,7 @@
                         <tr th:each="thisMonth : ${allThisMonth}" class="cashflow-rows">
                             <td th:text="${thisMonth.date}">6/10</td>
                             <td th:text="${thisMonth.categoryName}">趣味・娯楽</td>
-                            <td th:text="${thisMonth.inOut} ? '-￥' + ${thisMonth.dailyAmount} : '+￥' + ${thisMonth.dailyAmount}"
+                            <td th:text="${thisMonth.inOut} ? '￥-' + ${thisMonth.dailyAmount} : '￥+' + ${thisMonth.dailyAmount}"
                                 th:classappend="${thisMonth.inOut} ? 'cashflow-out' : 'cashflow-in'">
                                 -￥5,000
                             </td>
@@ -67,7 +67,7 @@
                         <tr th:each="lastMonth : ${allLastMonth}" class="cashflow-rows">
                             <td th:text="${lastMonth.date}">6/10</td>
                             <td th:text="${lastMonth.categoryName}">趣味・娯楽</td>
-                            <td th:text="${lastMonth.inOut} ? '-￥' + ${lastMonth.dailyAmount} : '+￥' + ${lastMonth.dailyAmount}"
+                            <td th:text="${lastMonth.inOut} ? '￥-' + ${lastMonth.dailyAmount} : '￥+' + ${lastMonth.dailyAmount}"
                                 th:classappend="${lastMonth.inOut} ? 'cashflow-out' : 'cashflow-in'">
                                 -￥5,000
                             </td>

@@ -59,7 +59,7 @@
     font-weight: 500;
     padding-left: 8px;
 }
-.mypage-monthlyBudgetAmount {
+/* .mypage-monthlyBudgetAmount {
     border-bottom: 1px solid white;
     padding-bottom: 8px;
     padding-left: 8px;
@@ -68,6 +68,23 @@
     font-size: 28px;
     font-weight: 700;
     color: white;
+} */
+
+.mypage-plus,
+.mypage-minus {
+    border-bottom: 1px solid white;
+    padding-bottom: 8px;
+    padding-left: 8px;
+}
+.mypage-plus span {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+.mypage-minus span {
+    font-size: 28px;
+    font-weight: 700;
+    color: red;
 }
 
 /* 各変更項目 */
