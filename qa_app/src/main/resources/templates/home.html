@@ -17,7 +17,7 @@
       <!-- 使用可能金額を表示 -->
       <div class="home-topAmount-container">
         <span id="home-show-title">使用可能金額</span><br>
-        <span class="home-show-amount"
+        <span th:classappend="${availableBalance} >= 0 ? 'home-plus' : 'home-minus'"
           th:text="'¥' + ${#strings.length(availableBalance) >= 4 ? #numbers.formatInteger(availableBalance,3,'COMMA') : availableBalance}">￥93,000</span>
       </div>
       <div class="home-bottomAmount-container">

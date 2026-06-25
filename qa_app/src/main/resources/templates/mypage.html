@@ -12,7 +12,7 @@
     <!-- 今月の使用可能金額予算 -->
     <div class="mypage-monthlyBudget">
         <span class="mypage-monthlyBudget-title">今月の使用可能金額予算</span>
-        <div class="mypage-monthlyBudgetAmount">
+        <div th:classappend="${monthlyBudget} >= 0 ? 'mypage-plus' : 'mypage-minus'">
             <span>¥</span>
             <span th:text="${monthlyBudget}">105,000</span>
         </div>

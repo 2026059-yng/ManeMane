@@ -199,10 +199,15 @@ th.cashflow-deletecol {
   font-weight: bold;
   color: rgb(233, 233, 233);
 }
-.home-show-amount{
+.home-plus {
   font-size: 26px;
   font-weight: bold;
-  color: rgb(250, 250, 250);
+  color: white;
+}
+.home-minus {
+  font-size: 26px;
+  font-weight: bold;
+  color: red;
 }
 .home-bottomAmount-container{
   display: flex;
